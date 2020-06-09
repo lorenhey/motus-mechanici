@@ -220,6 +220,100 @@
     ]
   },
   {
+    "id": "HISCOX-0113",
+    "title": "Spur Gears",
+    "families": [
+      "gear",
+      "rotary"
+    ],
+    "degreesOfFreedom": 1,
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
+    "source": {
+      "edition": "1899",
+      "year": 1899,
+      "page": 39,
+      "figureNumber": "113",
+      "originalTitle": "SPUR GEARS",
+      "originalDescription": "The most common form of gears, used to transmit rotary motion between parallel shafts.",
+      "url": "https://archive.org/details/1800-mechanical-movements-devices-and-appliances_202005"
+    },
+    "assumptions": [
+      "Teeth are abstracted as continuous pitch circles for kinematic simulation."
+    ],
+    "relatedMechanisms": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Driver Radius (r1)",
+        "value": 30,
+        "min": 10,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Driven Radius (r2)",
+        "value": 50,
+        "min": 10,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "angle",
+        "label": "Alignment Angle",
+        "value": 0,
+        "min": -3.14159,
+        "max": 3.14159,
+        "unit": "rad"
+      },
+      {
+        "id": "internal",
+        "label": "Internal Gear",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Driver Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Driven Angle",
+        "unit": "rad"
+      }
+    ],
+    "components": [],
+    "joints": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "r1",
+        "angle": "theta",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "r2",
+        "angle": "theta2",
+        "color": "#5a5854"
+      }
+    ],
+    "solver": {
+      "type": "SIMPLE_GEAR"
+    },
+    "equations": [
+      "\\theta_2 = -\\theta_1 \\frac{r_1}{r_2}",
+      "\\text{Ratio: } i = \\frac{r_1}{r_2}"
+    ]
+  },
+  {
     "id": "HISCOX-0003",
     "title": "THE  RESOLUTION  OF  SUS¬",
     "families": [],
@@ -1262,9 +1356,13 @@
   {
     "id": "HISCOX-0088",
     "title": "CHANGE  SPEED  STEP  PULLEYS",
-    "families": [],
-    "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "families": [
+      "pulley",
+      "belt",
+      "rotary"
+    ],
+    "degreesOfFreedom": 1,
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1276,14 +1374,103 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Driver Radius (r1)",
+        "value": 20,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Driven Radius (r2)",
+        "value": 40,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Horizontal Distance",
+        "value": 100,
+        "min": 50,
+        "max": 150,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Vertical Distance",
+        "value": 0,
+        "min": -50,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed Belt",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Driver Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Driven Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "r1",
+        "angle": "theta",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "r2",
+        "angle": "theta2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "radius": "r1,r2",
+        "color": "#888888"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\theta_2 = \\theta_1 \\frac{r_1}{r_2} \\times \\text{(1 if open, -1 if crossed)}"
+    ]
   },
   {
     "id": "HISCOX-0089",
@@ -1885,10 +2072,14 @@
   },
   {
     "id": "HISCOX-0119",
-    "title": "LINK  BELT  AND  PULLEY",
-    "families": [],
-    "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "title": "Link Belt and Pulley",
+    "families": [
+      "pulley",
+      "belt",
+      "rotary"
+    ],
+    "degreesOfFreedom": 1,
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1900,14 +2091,103 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Driver Radius (r1)",
+        "value": 30,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Driven Radius (r2)",
+        "value": 30,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Horizontal Distance",
+        "value": 120,
+        "min": 50,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Vertical Distance",
+        "value": 0,
+        "min": -50,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed Belt",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Driver Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Driven Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "r1",
+        "angle": "theta",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "r2",
+        "angle": "theta2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "radius": "r1,r2",
+        "color": "#888888"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\theta_2 = \\theta_1 \\frac{r_1}{r_2}"
+    ]
   },
   {
     "id": "HISCOX-0120",
@@ -2041,10 +2321,13 @@
   },
   {
     "id": "HISCOX-0128",
-    "title": "INTERNAL  SPUR  GEAR  a",
-    "families": [],
-    "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "title": "Internal Spur Gear and Pinion",
+    "families": [
+      "gear",
+      "rotary"
+    ],
+    "degreesOfFreedom": 1,
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -2056,14 +2339,76 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Pinion Radius (r1)",
+        "value": 20,
+        "min": 10,
+        "max": 60,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Ring Radius (r2)",
+        "value": 80,
+        "min": 40,
+        "max": 150,
+        "unit": "mm"
+      },
+      {
+        "id": "angle",
+        "label": "Alignment Angle",
+        "value": 0,
+        "min": -3.14159,
+        "max": 3.14159,
+        "unit": "rad"
+      },
+      {
+        "id": "internal",
+        "label": "Internal",
+        "value": 1,
+        "min": 1,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Driver Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Driven Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "r1",
+        "angle": "theta",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "r2",
+        "angle": "theta2",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "SIMPLE_GEAR"
+    },
+    "equations": [
+      "\\theta_2 = \\theta_1 \\frac{r_1}{r_2} \\text{ (same direction)}"
+    ]
   },
   {
     "id": "HISCOX-0130",
@@ -16575,10 +16920,14 @@
   },
   {
     "id": "HISCOX-0980",
-    "title": "EPICYCLIC  TRAIN",
-    "families": [],
-    "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "title": "Epicyclic Gear Train (Planetary)",
+    "families": [
+      "gear",
+      "epicyclic",
+      "rotary"
+    ],
+    "degreesOfFreedom": 2,
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -16590,14 +16939,77 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "rs",
+        "label": "Sun Radius",
+        "value": 30,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      },
+      {
+        "id": "rp",
+        "label": "Planet Radius",
+        "value": 20,
+        "min": 10,
+        "max": 80,
+        "unit": "mm"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta_s",
+        "label": "Sun Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_c",
+        "label": "Carrier Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_r",
+        "label": "Ring Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_p",
+        "label": "Planet Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#888888"
+      },
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "rs",
+        "angle": "theta_s",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "rp",
+        "angle": "theta_p",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "PLANETARY_GEAR"
+    },
+    "equations": [
+      "\\omega_r = \\frac{(r_r + r_s)\\omega_c - r_s\\omega_s}{r_r}",
+      "\\omega_p = \\frac{(r_s + r_p)\\omega_c - r_s\\omega_s}{r_p}"
+    ]
   },
   {
     "id": "HISCOX-0981",

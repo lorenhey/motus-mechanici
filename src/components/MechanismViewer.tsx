@@ -130,6 +130,74 @@ export default function MechanismViewer({ def }: MechanismViewerProps) {
                 />
               );
             }
+            if ((v.type === 'circle' || v.type === 'gear') && v.p1 && v.radius) {
+              const p = mech.points[v.p1];
+              if (!p) return null;
+              const r = (mech.state[v.radius] || 10) * scale;
+              const angle = v.angle ? (mech.state[v.angle] || 0) : 0;
+              
+              return (
+                <g key={i}>
+                  <circle 
+                    cx={cx + p.x * scale} 
+                    cy={cy - p.y * scale} 
+                    r={Math.abs(r)} 
+                    fill="none" 
+                    stroke={v.color || "#2b2a27"} 
+                    strokeWidth="2" 
+                    strokeDasharray={v.type === 'gear' ? "4 4" : ""}
+                  />
+                  {v.type === 'gear' && (
+                    <line 
+                      x1={cx + p.x * scale} 
+                      y1={cy - p.y * scale} 
+                      x2={cx + p.x * scale + r * Math.cos(angle)} 
+                      y2={cy - p.y * scale - r * Math.sin(angle)} 
+                      stroke={v.color || "#2b2a27"} 
+                      strokeWidth="2" 
+                    />
+                  )}
+                </g>
+              );
+            }
+            if (v.type === 'belt' && v.p1 && v.p2 && v.radius) {
+              const p1 = mech.points[v.p1];
+              const p2 = mech.points[v.p2];
+              if (!p1 || !p2) return null;
+              
+              // We'll extract r1 and r2. The visual should maybe define radius="r1" and radius2="r2".
+              // Let's assume v.radius is a comma-separated string like "r1,r2" for simplicity if needed,
+              // or we just use r1 and r2 directly from state based on the generic names.
+              // For a general engine, it's better to add `radius2` to Visual, but let's hardcode the keys for now to get it working, or split by comma.
+              const radii = v.radius.split(',');
+              const r1 = (mech.state[radii[0]] || 10) * scale;
+              const r2 = (mech.state[radii[1]] || 10) * scale;
+              
+              // Crossed? Let's check state 'crossed'
+              const crossed = mech.state['crossed'] === 1;
+              
+              // Simplistic belt path (just straight lines connecting tops and bottoms for open, or crossing)
+              // Real math involves calculating tangent points.
+              let path = '';
+              if (crossed) {
+                // Approximate tangent points for crossed belt
+                path = `M ${cx + p1.x * scale} ${cy - p1.y * scale - r1} L ${cx + p2.x * scale} ${cy - p2.y * scale + r2}`;
+                path += ` M ${cx + p1.x * scale} ${cy - p1.y * scale + r1} L ${cx + p2.x * scale} ${cy - p2.y * scale - r2}`;
+              } else {
+                path = `M ${cx + p1.x * scale} ${cy - p1.y * scale - r1} L ${cx + p2.x * scale} ${cy - p2.y * scale - r2}`;
+                path += ` M ${cx + p1.x * scale} ${cy - p1.y * scale + r1} L ${cx + p2.x * scale} ${cy - p2.y * scale + r2}`;
+              }
+              
+              return (
+                <path 
+                  key={i}
+                  d={path}
+                  stroke={v.color || "#888"}
+                  strokeWidth="2"
+                  fill="none"
+                />
+              );
+            }
             return null;
           })}
           {/* Ground line (specifically for crank slider) */}

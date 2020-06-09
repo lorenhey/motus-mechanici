@@ -56,16 +56,19 @@ export interface Joint {
 }
 
 export interface SolverDefinition {
-  type: 'CRANK_SLIDER' | 'FOUR_BAR' | 'GEAR_TRAIN' | 'DIRECT' | 'NUMERICAL';
-  // Mapping of solver inputs to parameters/components
+  type: 'CRANK_SLIDER' | 'FOUR_BAR' | 'DIRECT' | 'GEAR_TRAIN' | 'NUMERICAL' | 'SIMPLE_GEAR' | 'BELT_PULLEY' | 'PLANETARY_GEAR';
+  iterations?: number;
+  tolerance?: number;
 }
 
 export interface Visual {
-  type: 'line' | 'point' | 'rect';
+  type: 'line' | 'point' | 'rect' | 'circle' | 'gear' | 'belt';
   p1?: string; // point ID
   p2?: string;
   width?: number;
   height?: number;
+  radius?: string; // key of the parameter that holds the radius (e.g., 'r1')
+  angle?: string; // key of the variable that holds the angle (e.g., 'theta')
   color?: string;
 }
 
