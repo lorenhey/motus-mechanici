@@ -4,6 +4,9 @@ import { solveFourBar } from './solvers/FourBarSolver';
 import { solveSimpleGear } from './solvers/SimpleGearSolver';
 import { solveBeltPulley } from './solvers/BeltPulleySolver';
 import { solvePlanetaryGear } from './solvers/PlanetaryGearSolver';
+import { solveRackPinion } from './solvers/RackPinionSolver';
+import { solveCamFollower } from './solvers/CamFollowerSolver';
+import { solveScotchYoke } from './solvers/ScotchYokeSolver';
 
 export class Mechanism {
   def: MechanismDefinition;
@@ -107,6 +110,43 @@ export class Mechanism {
       
       this.state['theta_r'] = res.theta_r;
       this.state['theta_p'] = res.theta_p;
+    } else if (this.def.solver.type === 'RACK_PINION') {
+      const r = this.state['r'];
+      const y0 = this.state['y0'];
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveRackPinion({ r, y0, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.valid = res.valid;
+      
+      this.state['x'] = res.x;
+    } else if (this.def.solver.type === 'CAM_FOLLOWER') {
+      const r_base = this.state['r_base'];
+      const r_lift = this.state['r_lift'];
+      const r_follower = this.state['r_follower'];
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveCamFollower({ r_base, r_lift, r_follower, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.points['p2'] = res.p2;
+      this.valid = res.valid;
+      
+      this.state['y'] = res.y;
+    } else if (this.def.solver.type === 'SCOTCH_YOKE') {
+      const r = this.state['r'];
+      const theta = this.state['theta'] || 0;
+      const vertical = this.state['vertical'] === 1;
+      
+      const res = solveScotchYoke({ r, theta, vertical });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.points['p2'] = res.p2;
+      this.valid = res.valid;
+      
+      // In a Scotch Yoke, the yoke frame moves with pos, and p1 is the crank pin sliding in the slot
+      this.state['pos'] = res.pos;
     }
   }
 }

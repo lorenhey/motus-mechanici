@@ -56,13 +56,13 @@ export interface Joint {
 }
 
 export interface SolverDefinition {
-  type: 'CRANK_SLIDER' | 'FOUR_BAR' | 'DIRECT' | 'GEAR_TRAIN' | 'NUMERICAL' | 'SIMPLE_GEAR' | 'BELT_PULLEY' | 'PLANETARY_GEAR';
+  type: 'CRANK_SLIDER' | 'FOUR_BAR' | 'DIRECT' | 'GEAR_TRAIN' | 'NUMERICAL' | 'SIMPLE_GEAR' | 'BELT_PULLEY' | 'PLANETARY_GEAR' | 'RACK_PINION' | 'CAM_FOLLOWER' | 'SCOTCH_YOKE';
   iterations?: number;
   tolerance?: number;
 }
 
 export interface Visual {
-  type: 'line' | 'point' | 'rect' | 'circle' | 'gear' | 'belt';
+  type: 'line' | 'point' | 'rect' | 'circle' | 'gear' | 'belt' | 'cam';
   p1?: string; // point ID
   p2?: string;
   width?: number;
