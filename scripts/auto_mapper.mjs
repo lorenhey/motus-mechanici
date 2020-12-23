@@ -4,7 +4,7 @@ const path = 'src/data/catalog.json';
 const data = JSON.parse(fs.readFileSync(path, 'utf8'));
 
 let count = 0;
-const LIMIT = 200;
+const LIMIT = 2000;
 
 for (const entry of data) {
   if (entry.fidelity !== 'STATIC') continue;
@@ -14,7 +14,25 @@ for (const entry of data) {
   const desc = entry.source?.originalDescription || '';
   const text = (title + ' ' + desc).toUpperCase();
   
-  if (text.includes('GEAR') && !text.includes('RACK') && !text.includes('INTERNAL')) {
+  if (text.includes('RACK') && (text.includes('PINION') || text.includes('GEAR'))) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'RACK_PINION' };
+    entry.parameters = [
+      { id: "r", label: "Pinion Radius", value: 30, min: 10, max: 80, unit: "mm" },
+      { id: "y0", label: "Rack Offset", value: -30, min: -80, max: 80, unit: "mm" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Pinion Angle", unit: "rad" },
+      { id: "x", label: "Rack Position", unit: "mm" }
+    ];
+    entry.visuals = [
+      { type: "gear", p1: "p0", radius: "r", angle: "theta", color: "#b7410e" },
+      { type: "rect", p1: "p1", width: 200, height: 10, color: "#5a5854" }
+    ];
+    entry.equations = ["x = r \\cdot \\theta"];
+    count++;
+  }
+  else if (text.includes('GEAR') && !text.includes('RACK') && !text.includes('INTERNAL')) {
     entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
     entry.solver = { type: 'SIMPLE_GEAR' };
     entry.parameters = [
