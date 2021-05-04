@@ -50,7 +50,7 @@ for (const entry of data) {
     entry.equations = ["\\theta_2 = -\\theta_1 \\frac{r_1}{r_2}"];
     count++;
   } 
-  else if (text.includes('PULLEY') || text.includes('BELT')) {
+  else if (text.includes('PULLEY') || text.includes('BELT') || text.includes('ROPE')) {
     entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
     entry.solver = { type: 'BELT_PULLEY' };
     entry.parameters = [
@@ -69,6 +69,30 @@ for (const entry of data) {
       { type: "belt", p1: "p0", p2: "p1", radius: "r1,r2", color: "#222" }
     ];
     entry.equations = ["\\theta_2 = \\theta_1 \\frac{r_1}{r_2} \\times (\\text{crossed} ? -1 : 1)"];
+    count++;
+  }
+  else if (text.includes('PARALLEL')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'FOUR_BAR' };
+    entry.parameters = [
+      { id: "l1", label: "Crank", value: 40, min: 10, max: 80, unit: "mm" },
+      { id: "l2", label: "Coupler", value: 80, min: 20, max: 200, unit: "mm" },
+      { id: "l3", label: "Rocker", value: 40, min: 10, max: 80, unit: "mm" },
+      { id: "l4", label: "Ground", value: 80, min: 20, max: 200, unit: "mm" }
+    ];
+    entry.variables = [
+      { id: "theta1", label: "Crank Angle", unit: "rad" },
+      { id: "theta3", label: "Rocker Angle", unit: "rad" }
+    ];
+    entry.visuals = [
+      { type: "line", p1: "p0", p2: "p1", color: "#b7410e" },
+      { type: "line", p1: "p1", p2: "p2", color: "#888" },
+      { type: "line", p1: "p2", p2: "p3", color: "#5a5854" },
+      { type: "line", p1: "p3", p2: "p0", color: "#222" },
+      { type: "point", p1: "p0" }, { type: "point", p1: "p1" },
+      { type: "point", p1: "p2" }, { type: "point", p1: "p3" }
+    ];
+    entry.equations = ["\\text{Vector Loop: } \\vec{l_1} + \\vec{l_2} - \\vec{l_3} - \\vec{l_4} = 0"];
     count++;
   }
   else if (text.includes('CAM ') || text.includes('WIPER')) {
@@ -111,7 +135,7 @@ for (const entry of data) {
     entry.equations = ["pos = r \\cos(\\theta)"];
     count++;
   }
-  else if (text.includes('CRANK') || text.includes('RECIPROCATING')) {
+  else if (text.includes('CRANK') || text.includes('RECIPROCATING') || text.includes('PUMP')) {
     entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
     entry.solver = { type: 'CRANK_SLIDER' };
     entry.parameters = [
