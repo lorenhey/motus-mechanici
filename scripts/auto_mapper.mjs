@@ -75,14 +75,14 @@ for (const entry of data) {
     entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
     entry.solver = { type: 'FOUR_BAR' };
     entry.parameters = [
-      { id: "l1", label: "Crank", value: 40, min: 10, max: 80, unit: "mm" },
-      { id: "l2", label: "Coupler", value: 80, min: 20, max: 200, unit: "mm" },
-      { id: "l3", label: "Rocker", value: 40, min: 10, max: 80, unit: "mm" },
-      { id: "l4", label: "Ground", value: 80, min: 20, max: 200, unit: "mm" }
+      { id: "a", label: "Crank", value: 40, min: 10, max: 80, unit: "mm" },
+      { id: "b", label: "Coupler", value: 80, min: 20, max: 200, unit: "mm" },
+      { id: "c", label: "Rocker", value: 40, min: 10, max: 80, unit: "mm" },
+      { id: "d", label: "Ground", value: 80, min: 20, max: 200, unit: "mm" }
     ];
     entry.variables = [
-      { id: "theta1", label: "Crank Angle", unit: "rad" },
-      { id: "theta3", label: "Rocker Angle", unit: "rad" }
+      { id: "theta", label: "Crank Angle", unit: "rad" },
+      { id: "phi", label: "Rocker Angle", unit: "rad" }
     ];
     entry.visuals = [
       { type: "line", p1: "p0", p2: "p1", color: "#b7410e" },
@@ -92,7 +92,52 @@ for (const entry of data) {
       { type: "point", p1: "p0" }, { type: "point", p1: "p1" },
       { type: "point", p1: "p2" }, { type: "point", p1: "p3" }
     ];
-    entry.equations = ["\\text{Vector Loop: } \\vec{l_1} + \\vec{l_2} - \\vec{l_3} - \\vec{l_4} = 0"];
+    entry.equations = ["\\text{Vector Loop: } \\vec{a} + \\vec{b} - \\vec{c} - \\vec{d} = 0"];
+    count++;
+  }
+  else if (text.includes('LEVER') || text.includes('LINK') || text.includes('JOINT') || text.includes('STRAIGHT')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'FOUR_BAR' };
+    entry.parameters = [
+      { id: "a", label: "Crank", value: 30, min: 10, max: 80, unit: "mm" },
+      { id: "b", label: "Coupler", value: 100, min: 20, max: 200, unit: "mm" },
+      { id: "c", label: "Rocker", value: 60, min: 10, max: 80, unit: "mm" },
+      { id: "d", label: "Ground", value: 100, min: 20, max: 200, unit: "mm" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Crank Angle", unit: "rad" },
+      { id: "phi", label: "Rocker Angle", unit: "rad" }
+    ];
+    entry.visuals = [
+      { type: "line", p1: "p0", p2: "p1", color: "#b7410e" },
+      { type: "line", p1: "p1", p2: "p2", color: "#888" },
+      { type: "line", p1: "p2", p2: "p3", color: "#5a5854" },
+      { type: "line", p1: "p3", p2: "p0", color: "#222" },
+      { type: "point", p1: "p0" }, { type: "point", p1: "p1" },
+      { type: "point", p1: "p2" }, { type: "point", p1: "p3" }
+    ];
+    entry.equations = ["\\text{Vector Loop: } \\vec{a} + \\vec{b} - \\vec{c} - \\vec{d} = 0"];
+    count++;
+  }
+  else if (text.includes('VALVE') || text.includes('SLIDE')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'CRANK_SLIDER' };
+    entry.parameters = [
+      { id: "r", label: "Eccentric", value: 15, min: 5, max: 40, unit: "mm" },
+      { id: "l", label: "Valve Rod", value: 100, min: 40, max: 200, unit: "mm" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Angle", unit: "rad" },
+      { id: "x", label: "Valve Pos", unit: "mm" }
+    ];
+    entry.visuals = [
+      { type: "line", p1: "p0", p2: "p1", color: "#b7410e" },
+      { type: "line", p1: "p1", p2: "p2", color: "#5a5854" },
+      { type: "point", p1: "p0" },
+      { type: "point", p1: "p1" },
+      { type: "rect", p1: "p2", width: 30, height: 15, color: "#222" }
+    ];
+    entry.equations = ["x = r \\cos(\\theta) + \\sqrt{l^2 - r^2 \\sin^2(\\theta)}"];
     count++;
   }
   else if (text.includes('CAM ') || text.includes('WIPER')) {
@@ -154,6 +199,23 @@ for (const entry of data) {
       { type: "rect", p1: "p2", width: 40, height: 20, color: "#222" }
     ];
     entry.equations = ["x = r \\cos(\\theta) + \\sqrt{l^2 - r^2 \\sin^2(\\theta)}"];
+    count++;
+  }
+  else if (text.includes('SCREW') || text.includes('THREAD') || text.includes('WORM')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'SCREW' };
+    entry.parameters = [
+      { id: "pitch", label: "Thread Pitch", value: 10, min: 2, max: 50, unit: "mm" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Rotation", unit: "rad" },
+      { id: "x", label: "Linear Pos", unit: "mm" }
+    ];
+    entry.visuals = [
+      { type: "gear", p1: "p0", radius: "15", angle: "theta", color: "#b7410e" },
+      { type: "rect", p1: "p1", width: 60, height: 10, color: "#5a5854" }
+    ];
+    entry.equations = ["x = \\text{pitch} \\times \\frac{\\theta}{2\\pi}"];
     count++;
   }
 }

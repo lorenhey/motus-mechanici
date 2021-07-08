@@ -55,11 +55,17 @@ export interface Joint {
   local2?: Point2D;
 }
 
-export interface SolverDefinition {
-  type: 'CRANK_SLIDER' | 'FOUR_BAR' | 'DIRECT' | 'GEAR_TRAIN' | 'NUMERICAL' | 'SIMPLE_GEAR' | 'BELT_PULLEY' | 'PLANETARY_GEAR' | 'RACK_PINION' | 'CAM_FOLLOWER' | 'SCOTCH_YOKE';
-  iterations?: number;
-  tolerance?: number;
-}
+export type SolverDefinition =
+  | { type: 'CRANK_SLIDER' }
+  | { type: 'FOUR_BAR' }
+  | { type: 'DIRECT' }
+  | { type: 'SIMPLE_GEAR' }
+  | { type: 'BELT_PULLEY' }
+  | { type: 'PLANETARY_GEAR' }
+  | { type: 'RACK_PINION' }
+  | { type: 'CAM_FOLLOWER' }
+  | { type: 'SCOTCH_YOKE' }
+  | { type: 'SCREW' };
 
 export interface Visual {
   type: 'line' | 'point' | 'rect' | 'circle' | 'gear' | 'belt' | 'cam';
