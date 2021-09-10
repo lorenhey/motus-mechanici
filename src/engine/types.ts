@@ -3,7 +3,8 @@ export type FidelityLevel =
   | 'KINEMATICALLY_RECONSTRUCTED'
   | 'INTERPRETATIVE'
   | 'ILLUSTRATIVE_ONLY'
-  | 'STATIC';
+  | 'STATIC'
+  | 'STATIC_ASSET';
 
 export interface SourceReference {
   edition: string;
@@ -65,7 +66,9 @@ export type SolverDefinition =
   | { type: 'RACK_PINION' }
   | { type: 'CAM_FOLLOWER' }
   | { type: 'SCOTCH_YOKE' }
-  | { type: 'SCREW' };
+  | { type: 'SCREW' }
+  | { type: 'INTERMITTENT' }
+  | { type: 'ESCAPEMENT' };
 
 export interface Visual {
   type: 'line' | 'point' | 'rect' | 'circle' | 'gear' | 'belt' | 'cam';

@@ -439,7 +439,7 @@
     "title": "With  truss  beams  carrying  un¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -7999,7 +7999,7 @@
     "title": "UNIFORM  INTERMITTENT  MO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -8011,14 +8011,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0138",
@@ -8727,7 +8764,7 @@
     "title": "TRACTION  RECORD¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -8739,14 +8776,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0147",
@@ -9801,7 +9889,7 @@
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9813,21 +9901,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0166",
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9839,21 +9964,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0167",
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9865,21 +10027,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0168",
     "title": "INTERMITTENT  ROTARY  MOTION,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9891,21 +10090,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0169",
     "title": "INTERMITTENT  ROTARY  MO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9917,21 +10153,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0170",
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9943,14 +10216,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0177",
@@ -9983,7 +10293,7 @@
     "title": "LOCOMOTIVE  BOILER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10009,7 +10319,7 @@
     "title": "MARINE  BOILER,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10113,7 +10423,7 @@
     "title": "“DION”  VEHICLE  BOILER.— A",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11043,7 +11353,7 @@
     "title": "“  SERVES  ”  BOILER  TUBE— The  pro-",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11734,7 +12044,7 @@
     "title": "MECHANICAL  STOKER  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11746,14 +12056,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0214",
@@ -24360,7 +24707,7 @@
     "title": "FILTER  FOR  BOILER,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -26222,7 +26569,7 @@
     "title": "PENDULUM  GOVERNOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -26234,14 +26581,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0442",
@@ -28834,7 +29232,7 @@
     "title": "IMPACT  WATER  WHEEL,  “",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28846,14 +29244,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0499",
@@ -31771,7 +32206,7 @@
     "title": "SIPHON  a",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33276,7 +33711,7 @@
     "title": "WATER  PURIFYING  FILTER,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33302,7 +33737,7 @@
     "title": "REVERSIBLE  FILTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33550,7 +33985,7 @@
     "title": "DOMESTIC  FILTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33576,7 +34011,7 @@
     "title": "DOMESTIC  FILTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36031,7 +36466,7 @@
     "title": "ELECTRIC  WIND",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36194,7 +36629,7 @@
     "title": "FOOT  BELLOWS,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36206,14 +36641,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0626",
@@ -40711,7 +41183,7 @@
     "title": "ELECTRIC  CAR  BRAKE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40877,7 +41349,7 @@
     "title": "ELECTRIC  IGNITER,  u",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40996,7 +41468,7 @@
     "title": "MAGNETO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41240,7 +41712,7 @@
     "title": "ELECTRIC  GAS  LIGHTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41266,7 +41738,7 @@
     "title": "ELECTRIC  GAS  LIGHTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41292,7 +41764,7 @@
     "title": "POCKET  ELECTRIC  LIGHT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41416,7 +41888,7 @@
     "title": "ELECTRIC  HEATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41442,7 +41914,7 @@
     "title": "ELECTRIC  SOL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41468,7 +41940,7 @@
     "title": "ELECTRIC  SAD  IRON",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41608,7 +42080,7 @@
     "title": "ELECTRIC  FURNACE,  s",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41634,7 +42106,7 @@
     "title": "OPEN  TOP  ELECTRIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41660,7 +42132,7 @@
     "title": "“  SIEMEN’S  ”  ELECTRIC  GAS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41686,7 +42158,7 @@
     "title": "“  COWLES  ”  ELECTRIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41797,7 +42269,7 @@
     "title": "ELECTRIC  WELDING  PLANT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41823,7 +42295,7 @@
     "title": "PORTABLE  ELECTRIC  MOTOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41849,7 +42321,7 @@
     "title": "ELECTRIC  PERFORATING  PEN,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42217,7 +42689,7 @@
     "title": "ELECTRIC  FAN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42243,7 +42715,7 @@
     "title": "ELECTRIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42960,7 +43432,7 @@
     "title": "TIMBER  HITCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42986,7 +43458,7 @@
     "title": "SQUARE  OR  REEF  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43012,7 +43484,7 @@
     "title": "STEVEDORE  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43038,7 +43510,7 @@
     "title": "SLIP  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43090,7 +43562,7 @@
     "title": "BOWLINE  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43168,7 +43640,7 @@
     "title": "BOAT  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43194,7 +43666,7 @@
     "title": "DOUBLE  KNOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46167,7 +46639,7 @@
     "title": "ELECTRIC  BROUGHAM",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46291,7 +46763,7 @@
     "title": "ELECTRIC  TRICYCLE,  “",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -54410,7 +54882,7 @@
     "title": "INTERMITTENT  CIRCULAR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -54422,14 +54894,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-0998",
@@ -55660,7 +56169,7 @@
     "title": "CONTINUOUS  ROTARY  MOTION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -55672,14 +56181,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1011",
@@ -55800,7 +56346,7 @@
     "title": "INTERMITTENT  CIRCULAR  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -55812,14 +56358,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1013",
@@ -56054,7 +56637,7 @@
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -56066,14 +56649,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1016",
@@ -56251,7 +56871,7 @@
     "title": "RATCHET  HEAD  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -56263,14 +56883,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1019",
@@ -56426,7 +57083,7 @@
     "title": "BALL  SOCKET  RATCHET",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -56438,14 +57095,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1022",
@@ -58408,7 +59102,7 @@
     "title": "INTERMITTENT  ROTARY  MO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58420,14 +59114,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1051",
@@ -58688,7 +59419,7 @@
     "title": "INTERMITTENT  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58700,21 +59431,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1056",
     "title": "INTERMITTENT  MOVEMENT  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58726,21 +59494,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1057",
     "title": "INTERMITTENT  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58752,21 +59557,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1058",
     "title": "INTERMITTENT  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58778,21 +59620,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1059",
     "title": "INTERMITTENT  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58804,21 +59683,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1060",
     "title": "ROCKING  ESCAPEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58830,14 +59746,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1061",
@@ -64392,7 +65359,7 @@
     "title": "ANTIQUE  CLOCK  ESCAPE¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64404,21 +65371,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1152",
     "title": "DOUBLE  RATCHET",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64430,21 +65448,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1153",
     "title": "STAR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64456,21 +65511,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1154",
     "title": "ANCHOR  ESCAPEMENT  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64482,21 +65588,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1155",
     "title": "RECOIL  ESCAPEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64508,14 +65665,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1156",
@@ -64615,7 +65823,7 @@
     "title": "STUD  ESCAPEMENT,  u",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64627,21 +65835,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1158",
     "title": "LANTERN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64653,21 +65912,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1159",
     "title": "PIN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64679,21 +65989,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1162",
     "title": "SINGLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64705,21 +66066,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1163",
     "title": "THREE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64731,14 +66143,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1164",
@@ -64830,7 +66293,7 @@
     "title": "THREE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64842,21 +66305,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1166",
     "title": "MUDGE  GRAVITY  ESCAPEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64868,21 +66382,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1167",
     "title": "TRI",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64894,14 +66459,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1168",
@@ -64980,7 +66596,7 @@
     "title": "DOUBLE  TRI",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64992,21 +66608,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1170",
     "title": "“BLOXAM’S”  GRAVITY  ESCAPE¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65018,14 +66685,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1173",
@@ -65228,7 +66946,7 @@
     "title": "VERGE  ESCAPEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65240,21 +66958,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1178",
     "title": "CYLINDER  ESCAPEMENT,  s",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65266,21 +67035,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1180",
     "title": "DUPLEX  ESCAPEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65292,14 +67112,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1181",
@@ -65792,7 +67663,7 @@
     "title": "“ARNOLD”  CHRONOMETER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65804,21 +67675,72 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1187",
     "title": "FUSEE  CHAIN  AND  SPRING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65830,14 +67752,65 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Wheel Teeth",
+        "value": 30,
+        "min": 10,
+        "max": 60,
+        "unit": "n"
+      },
+      {
+        "id": "amplitude",
+        "label": "Swing Amp",
+        "value": 0.5,
+        "min": 0.1,
+        "max": 1.5,
+        "unit": "rad"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time/Phase",
+        "unit": "rad"
+      },
+      {
+        "id": "pendulum_angle",
+        "label": "Pendulum",
+        "unit": "rad"
+      },
+      {
+        "id": "wheel_angle",
+        "label": "Wheel",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "line",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "40",
+        "angle": "wheel_angle",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "ESCAPEMENT"
+    },
+    "equations": [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1188",
@@ -66030,7 +68003,7 @@
     "title": "WATCH  STOP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -66042,14 +68015,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1192",
@@ -69989,7 +71999,7 @@
     "title": "MAGNETIC  ORE  SEP¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70186,7 +72196,7 @@
     "title": "MAGNETIC  ORE  SEPARATOR,  “",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71365,7 +73375,7 @@
     "title": "CURVED  STEP  BEARING,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71377,14 +73387,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1277",
@@ -71545,7 +73592,7 @@
     "title": "SHAFT  STEP  ADJUSTMENT  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71557,14 +73604,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1281",
@@ -71635,7 +73719,7 @@
     "title": "COLLAR  BEARING  AND  STEP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71647,21 +73731,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1284",
     "title": "LENTICULAR  BEARING  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71673,21 +73794,58 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1285",
     "title": "SPHERICAL  STEP  BEARING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71699,14 +73857,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1286",
@@ -79882,7 +82077,7 @@
     "title": "GRINDING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -79894,14 +82089,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1428",
@@ -82334,7 +84566,7 @@
     "title": "TIMBER  SPLICING—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82702,7 +84934,7 @@
     "title": "TIMBER  SPLICING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82842,7 +85074,7 @@
     "title": "TRUSS  ROOF",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82868,7 +85100,7 @@
     "title": "WOODEN  ROAD  BRIDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82894,7 +85126,7 @@
     "title": "Double  strut  deck  truss",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82920,7 +85152,7 @@
     "title": "ARCHED  DECK  TRUSS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82946,7 +85178,7 @@
     "title": "BRIDGE  TRUSSES—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82998,7 +85230,7 @@
     "title": "“Whipple”  truss,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83024,7 +85256,7 @@
     "title": "ARCH  TRUSS  BRIDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83050,7 +85282,7 @@
     "title": "BRIDGE  TRUSSES",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83076,7 +85308,7 @@
     "title": "“  Howe”  truss,  with",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83102,7 +85334,7 @@
     "title": "“Post ’’truss,  verti¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83232,7 +85464,7 @@
     "title": "SWING  BRIDGE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83258,7 +85490,7 @@
     "title": "SWING  BRIDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83398,7 +85630,7 @@
     "title": "SUSPENSION  BRIDGES—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83450,7 +85682,7 @@
     "title": "SUSPENSION  BRIDGE —",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83476,7 +85708,7 @@
     "title": "SUSPENSION  BRIDGE —",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83502,7 +85734,7 @@
     "title": "SUSPENSION  BRIDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83554,7 +85786,7 @@
     "title": "ROLLING  LIFT  BRIDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90622,7 +92854,7 @@
     "title": "COLT  CYLINDER  REVOLVING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90634,14 +92866,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-1640",
@@ -94737,7 +97006,7 @@
     "title": "ALTERNATING  CUR¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -94749,14 +97018,51 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "teeth",
+        "label": "Teeth / Steps",
+        "value": 6,
+        "min": 3,
+        "max": 20,
+        "unit": "n"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Input Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_out",
+        "label": "Output Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "10",
+        "color": "#b7410e"
+      },
+      {
+        "type": "gear",
+        "p1": "p1",
+        "radius": "30",
+        "angle": "theta_out",
+        "color": "#5a5854"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "INTERMITTENT"
+    },
+    "equations": [
+      "\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"
+    ]
   },
   {
     "id": "HISCOX-796carrickbend",
