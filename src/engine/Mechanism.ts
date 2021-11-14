@@ -10,6 +10,7 @@ import { solveScotchYoke } from './solvers/ScotchYokeSolver';
 import { solveScrew } from './solvers/ScrewSolver';
 import { solveIntermittent } from './solvers/IntermittentSolver';
 import { solveEscapement } from './solvers/EscapementSolver';
+import { solveDirect } from './solvers/DirectSolver';
 
 export class Mechanism {
   def: MechanismDefinition;
@@ -73,6 +74,16 @@ export class Mechanism {
       let phi = Math.atan2(res.p2.y - res.p3.y, res.p2.x - res.p3.x);
       if (phi < 0) phi += 2 * Math.PI;
       this.state['phi'] = phi;
+    } else if (this.def.solver.type === 'DIRECT') {
+      const speed = this.state['speed'] || 1;
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveDirect({ speed, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.valid = res.valid;
+      
+      this.state['angle'] = res.angle;
     } else if (this.def.solver.type === 'SIMPLE_GEAR') {
       const r1 = this.state['r1'];
       const r2 = this.state['r2'];

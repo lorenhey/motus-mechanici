@@ -34,7 +34,7 @@ const mechanismSchema = {
     },
     solver: {
       type: "object",
-      properties: { type: { type: "string", enum: ['CRANK_SLIDER', 'FOUR_BAR', 'DIRECT', 'SIMPLE_GEAR', 'BELT_PULLEY', 'PLANETARY_GEAR', 'RACK_PINION', 'CAM_FOLLOWER', 'SCOTCH_YOKE'] } }
+      properties: { type: { type: "string", enum: ['CRANK_SLIDER', 'FOUR_BAR', 'DIRECT', 'SIMPLE_GEAR', 'BELT_PULLEY', 'PLANETARY_GEAR', 'RACK_PINION', 'CAM_FOLLOWER', 'SCOTCH_YOKE', 'SCREW', 'INTERMITTENT', 'ESCAPEMENT'] } }
     },
     equations: { type: "array", items: { type: "string" } },
     fidelity: { type: "string", enum: ["KINEMATICALLY_RECONSTRUCTED", "STATIC"] }
@@ -45,17 +45,17 @@ async function processMechanisms() {
   const staticEntries = data.filter(e => e.fidelity === 'STATIC');
   console.log(`Found ${staticEntries.length} STATIC mechanisms. Processing batch...`);
   
-  for (const entry of staticEntries.slice(0, 5)) { // Process in batches
+  for (const entry of staticEntries) { // Process all remaining
     console.log(`\nProcessing ${entry.id}: ${entry.title}`);
     
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-pro',
+        model: 'gemini-3.6-flash',
         contents: `You are an expert mechanical engineer. Design a kinematic model for the following historical mechanism:
 Title: ${entry.originalTitle}
 Description: ${entry.originalDescription}
 
-Available solvers: CRANK_SLIDER, FOUR_BAR, DIRECT, SIMPLE_GEAR, BELT_PULLEY, PLANETARY_GEAR, RACK_PINION, CAM_FOLLOWER, SCOTCH_YOKE.
+Available solvers: CRANK_SLIDER, FOUR_BAR, DIRECT, SIMPLE_GEAR, BELT_PULLEY, PLANETARY_GEAR, RACK_PINION, CAM_FOLLOWER, SCOTCH_YOKE, SCREW, INTERMITTENT, ESCAPEMENT.
 If the mechanism is a static object (like a boiler or battery) or too complex for these solvers, set fidelity to "STATIC".
 Otherwise, set fidelity to "KINEMATICALLY_RECONSTRUCTED" and provide the parameters, variables, visuals, solver, and equations (LaTeX).`,
         config: {

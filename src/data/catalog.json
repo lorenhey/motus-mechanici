@@ -224,7 +224,7 @@
     "title": "THE  RESOLUTION  OF  SUS¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -335,7 +335,7 @@
     "title": "In  a  combination  of  forces",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -361,7 +361,7 @@
     "title": "The  forces  in  the  direction  of  P  and",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -387,7 +387,7 @@
     "title": "Where  the  members  are  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -411,9 +411,12 @@
   {
     "id": "HISCOX-0008",
     "title": "For  unequal  angles.",
-    "families": [],
+    "families": [
+      "Linkage",
+      "Four-Bar"
+    ],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -425,14 +428,84 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Ground Link Length",
+        "unit": "m",
+        "value": 0.1
+      },
+      {
+        "id": "r2",
+        "label": "Crank Length",
+        "unit": "m",
+        "value": 0.04
+      },
+      {
+        "id": "r3",
+        "label": "Coupler Length",
+        "unit": "m",
+        "value": 0.08
+      },
+      {
+        "id": "r4",
+        "label": "Rocker Length",
+        "unit": "m",
+        "value": 0.08
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta2",
+        "label": "Crank Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta3",
+        "label": "Coupler Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta4",
+        "label": "Rocker Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "color": "#000000",
+        "p1": "0,0",
+        "p2": "r1,0",
+        "type": "line"
+      },
+      {
+        "color": "#FF0000",
+        "p1": "0,0",
+        "p2": "r2*cos(theta2),r2*sin(theta2)",
+        "type": "line"
+      },
+      {
+        "color": "#00FF00",
+        "p1": "r2*cos(theta2),r2*sin(theta2)",
+        "p2": "r1+r4*cos(theta4),r4*sin(theta4)",
+        "type": "line"
+      },
+      {
+        "color": "#0000FF",
+        "p1": "r1,0",
+        "p2": "r1+r4*cos(theta4),r4*sin(theta4)",
+        "type": "line"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "FOUR_BAR"
+    },
+    "equations": [
+      "r_2 \\cos(\\theta_2) + r_3 \\cos(\\theta_3) - r_4 \\cos(\\theta_4) - r_1 = 0",
+      "r_2 \\sin(\\theta_2) + r_3 \\sin(\\theta_3) - r_4 \\sin(\\theta_4) = 0"
+    ]
   },
   {
     "id": "HISCOX-0009",
@@ -579,7 +652,7 @@
     "title": "First  order.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -603,9 +676,12 @@
   {
     "id": "HISCOX-0012",
     "title": "Second  order.",
-    "families": [],
+    "families": [
+      "linkage",
+      "four_bar"
+    ],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -617,21 +693,93 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "L_1",
+        "label": "Ground Link Length",
+        "unit": "mm",
+        "value": 100
+      },
+      {
+        "id": "L_2",
+        "label": "Crank Length",
+        "unit": "mm",
+        "value": 40
+      },
+      {
+        "id": "L_3",
+        "label": "Coupler Link Length",
+        "unit": "mm",
+        "value": 120
+      },
+      {
+        "id": "L_4",
+        "label": "Rocker Link Length",
+        "unit": "mm",
+        "value": 90
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta_2",
+        "label": "Crank Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_3",
+        "label": "Coupler Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_4",
+        "label": "Rocker Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "color": "#000000",
+        "p1": "0,0",
+        "p2": "L_1,0",
+        "type": "line"
+      },
+      {
+        "color": "#FF0000",
+        "p1": "0,0",
+        "p2": "L_2*cos(theta_2),L_2*sin(theta_2)",
+        "type": "line"
+      },
+      {
+        "color": "#00FF00",
+        "p1": "L_2*cos(theta_2),L_2*sin(theta_2)",
+        "p2": "L_1+L_4*cos(theta_4),L_4*sin(theta_4)",
+        "type": "line"
+      },
+      {
+        "color": "#0000FF",
+        "p1": "L_1,0",
+        "p2": "L_1+L_4*cos(theta_4),L_4*sin(theta_4)",
+        "type": "line"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "FOUR_BAR"
+    },
+    "equations": [
+      "L_2 \\cos(\\theta_2) + L_3 \\cos(\\theta_3) - L_4 \\cos(\\theta_4) - L_1 = 0",
+      "L_2 \\sin(\\theta_2) + L_3 \\sin(\\theta_3) - L_4 \\sin(\\theta_4) = 0"
+    ]
   },
   {
     "id": "HISCOX-0013",
     "title": "Third  order.",
-    "families": [],
+    "families": [
+      "four_bar"
+    ],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -643,14 +791,84 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Ground Link Length",
+        "unit": "mm",
+        "value": 100
+      },
+      {
+        "id": "r2",
+        "label": "Crank Length",
+        "unit": "mm",
+        "value": 30
+      },
+      {
+        "id": "r3",
+        "label": "Coupler Length",
+        "unit": "mm",
+        "value": 90
+      },
+      {
+        "id": "r4",
+        "label": "Rocker Length",
+        "unit": "mm",
+        "value": 80
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta2",
+        "label": "Crank Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta3",
+        "label": "Coupler Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta4",
+        "label": "Rocker Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "color": "#888888",
+        "p1": "0,0",
+        "p2": "r1,0",
+        "type": "link"
+      },
+      {
+        "color": "#ff0000",
+        "p1": "0,0",
+        "p2": "r2*cos(theta2),r2*sin(theta2)",
+        "type": "link"
+      },
+      {
+        "color": "#00ff00",
+        "p1": "r2*cos(theta2),r2*sin(theta2)",
+        "p2": "r1+r4*cos(theta4),r4*sin(theta4)",
+        "type": "link"
+      },
+      {
+        "color": "#0000ff",
+        "p1": "r1,0",
+        "p2": "r1+r4*cos(theta4),r4*sin(theta4)",
+        "type": "link"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "FOUR_BAR"
+    },
+    "equations": [
+      "r_2 \\cos(\\theta_2) + r_3 \\cos(\\theta_3) - r_4 \\cos(\\theta_4) - r_1 = 0",
+      "r_2 \\sin(\\theta_2) + r_3 \\sin(\\theta_3) - r_4 \\sin(\\theta_4) = 0"
+    ]
   },
   {
     "id": "HISCOX-0014",
@@ -1177,7 +1395,7 @@
     "title": "Weight  sliding  on  inclined  surface",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1203,7 +1421,7 @@
     "title": "THE  WEDGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1458,7 +1676,7 @@
     "title": "Two  single  sheaves,  a,  b,  c  are  of  equal",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1470,21 +1688,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0029",
     "title": "Simple  sheave  block.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1496,21 +1788,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0030",
     "title": "Two  single  sheave  blocks — upper  one",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1522,21 +1888,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0031",
     "title": "Three  single  sheave  blocks — one  block  fixed,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1548,21 +1988,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0032",
     "title": "Three  single  sheave  blocks,  consisting  of  two  fixed",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1574,21 +2088,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0033",
     "title": "One  fixed  sheave  block,  one  movable  sheave  block.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1600,21 +2188,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0034",
     "title": "One  fixed  sheave  block,  two  movable  fixed",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1626,14 +2288,88 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0035",
@@ -1898,7 +2634,7 @@
     "title": "Roving  of  a  three  and  two  sheave  pair  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -1910,14 +2646,88 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0039",
@@ -2102,7 +2912,7 @@
     "title": "CHINESE  SHAFT  DERRICK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -2128,7 +2938,7 @@
     "title": "COMPOUND  WEIGHT  MOTOR,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -2245,9 +3055,12 @@
   {
     "id": "HISCOX-0044",
     "title": "SPANISH  WINDLASS",
-    "families": [],
+    "families": [
+      "Four-Bar Linkage",
+      "Planar Mechanisms"
+    ],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -2259,14 +3072,84 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "L_1",
+        "label": "Crank Length",
+        "unit": "m",
+        "value": 0.1
+      },
+      {
+        "id": "L_2",
+        "label": "Coupler Length",
+        "unit": "m",
+        "value": 0.3
+      },
+      {
+        "id": "L_3",
+        "label": "Rocker Length",
+        "unit": "m",
+        "value": 0.25
+      },
+      {
+        "id": "L_4",
+        "label": "Ground Length",
+        "unit": "m",
+        "value": 0.35
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta_1",
+        "label": "Crank Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_2",
+        "label": "Coupler Angle",
+        "unit": "rad"
+      },
+      {
+        "id": "theta_3",
+        "label": "Rocker Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "color": "#FF0000",
+        "p1": "0,0",
+        "p2": "L_1*cos(theta_1), L_1*sin(theta_1)",
+        "type": "line"
+      },
+      {
+        "color": "#0000FF",
+        "p1": "L_1*cos(theta_1), L_1*sin(theta_1)",
+        "p2": "L_4 + L_3*cos(theta_3), L_3*sin(theta_3)",
+        "type": "line"
+      },
+      {
+        "color": "#00FF00",
+        "p1": "L_4, 0",
+        "p2": "L_4 + L_3*cos(theta_3), L_3*sin(theta_3)",
+        "type": "line"
+      },
+      {
+        "color": "#000000",
+        "p1": "0,0",
+        "p2": "L_4, 0",
+        "type": "line"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "FOUR_BAR"
+    },
+    "equations": [
+      "L_1 \\cos(\\theta_1) + L_2 \\cos(\\theta_2) - L_3 \\cos(\\theta_3) - L_4 = 0",
+      "L_1 \\sin(\\theta_1) + L_2 \\sin(\\theta_2) - L_3 \\sin(\\theta_3) = 0"
+    ]
   },
   {
     "id": "HISCOX-0045",
@@ -3918,7 +4801,7 @@
     "title": "OVER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -4130,7 +5013,7 @@
     "title": "OVER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -7541,7 +8424,7 @@
     "title": "CROWN  WHEEL  g",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -8841,7 +9724,7 @@
     "title": "FRICTION  MACHINE,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9387,7 +10270,7 @@
     "title": "“LIPPINCOTT”  PLAN.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9413,7 +10296,7 @@
     "title": "CENTRIFUGAL  SPEED  INDI¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9425,14 +10308,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0158",
@@ -9511,7 +10425,7 @@
     "title": "METER  DIAL —",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9537,7 +10451,7 @@
     "title": "AUTOMATIC  TIPPING  SCALE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -9863,7 +10777,7 @@
     "title": "OPERATION  OF  A  COUNTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10267,7 +11181,7 @@
     "title": "HORIZONTAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10345,7 +11259,7 @@
     "title": "“ECLIPSE”  RETURN  TUBULAR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10371,7 +11285,7 @@
     "title": "“GALLOWAY”",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10397,7 +11311,7 @@
     "title": "INTERNAL  FIRED",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10677,7 +11591,7 @@
     "title": "SUBMERGED  HEAD  VERTICAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -10931,7 +11845,7 @@
     "title": "“BOYER’S”  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11021,7 +11935,7 @@
     "title": "Section  showing  bent  tubes.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11047,7 +11961,7 @@
     "title": "“MOYES",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11187,7 +12101,7 @@
     "title": "“CAHALL”  VERTICAL  WATER  TUBE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11327,7 +12241,7 @@
     "title": "“  SERPOLLET’S  ”  STEAM  GENER¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -11493,7 +12407,7 @@
     "title": "FURNACE  GRATE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -12018,7 +12932,7 @@
     "title": "MECHANICAL  STOKER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -12341,7 +13255,7 @@
     "title": "ORIGINAL  FORM  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -12843,7 +13757,7 @@
     "title": "COMPOUND  OSCILLATING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -13111,7 +14025,7 @@
     "title": "TANDEM  COMPOUND  VERTICAL  EN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -13137,7 +14051,7 @@
     "title": "TANDEM  COMPOUND  VERTICAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -13227,7 +14141,7 @@
     "title": "COMPOUND",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -13253,7 +14167,7 @@
     "title": "HIGH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -13279,7 +14193,7 @@
     "title": "TANDEM  COMPOUND  ENGINE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -19609,7 +20523,7 @@
     "title": "Vertical  Section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -19714,7 +20628,7 @@
     "title": "“PORTER”  GOVERNOR.— The  cen¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -20723,7 +21637,7 @@
     "title": "“COCHRANE”  ROTARY  ENGINE.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -20749,7 +21663,7 @@
     "title": "OSCILLATING  ENGINE,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -21138,7 +22052,7 @@
     "title": "ROLLER  PISTON  ROTARY  ENGINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -21164,7 +22078,7 @@
     "title": "“COCHRANE”  ROTARY  ENGINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -21190,7 +22104,7 @@
     "title": "“BOARDMAN”  ROTARY  EN¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -21729,7 +22643,7 @@
     "title": "“RUTH’S”  ROTARY  ENGINE.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22634,7 +23548,7 @@
     "title": "«  WILKINSON’S  ”  STEAM",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22660,7 +23574,7 @@
     "title": "Section  showing  steam  pockets.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22686,7 +23600,7 @@
     "title": "Vertical  section  of  engine.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22712,7 +23626,7 @@
     "title": "«  DE  LAVAL”  STEAM  TURBINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22724,21 +23638,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0370",
     "title": "Plan  showing  nozzle  at  side  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -22849,7 +23794,7 @@
     "title": "“SHAEFFER  &  BUDEN-",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -23584,7 +24529,7 @@
     "title": "“BROWNLEY”  INJECTOR.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -23865,7 +24810,7 @@
     "title": "“SELLERS’”  SELF-",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -24231,7 +25176,7 @@
     "title": "EXHAUST  JET  CONDENSER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -24570,7 +25515,7 @@
     "title": "FEED",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -24681,7 +25626,7 @@
     "title": "STEAM  SEPARATOR,  i",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -24932,7 +25877,7 @@
     "title": "SPRING  STEAM  TRAP—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -25157,7 +26102,7 @@
     "title": "CORRUGATED  EXPANSION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -25824,7 +26769,7 @@
     "title": "GASOLINE  CARRIAGE  MOTOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -25850,7 +26795,7 @@
     "title": "VERTICAL  GASOLINE  ENGINE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -25876,7 +26821,7 @@
     "title": "VERTICAL  GAS  ENGINE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -26543,7 +27488,7 @@
     "title": "INERTIA  GOVERNOR  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -26960,7 +27905,7 @@
     "title": "CARBURETTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27050,7 +27995,7 @@
     "title": "CONNECTING  ROD  HEAD,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27076,7 +28021,7 @@
     "title": "CONNECTING  ROD  END",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27166,7 +28111,7 @@
     "title": "CONNECTING  ROD  END,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27256,7 +28201,7 @@
     "title": "SOLID  END  CONNECTING  ROD",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27460,7 +28405,7 @@
     "title": "OVERSHOT  WATER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27486,7 +28431,7 @@
     "title": "IRON  OVERSHOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27512,7 +28457,7 @@
     "title": "Front  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27538,7 +28483,7 @@
     "title": "UNDERSHOT  WATER  WHEEL—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27564,7 +28509,7 @@
     "title": "SAW",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27590,7 +28535,7 @@
     "title": "BREAST  WATER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27616,7 +28561,7 @@
     "title": "FLUTTER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27642,7 +28587,7 @@
     "title": "BARKER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27761,7 +28706,7 @@
     "title": "Section  of  wheel  and  case.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27787,7 +28732,7 @@
     "title": "CURRENT  WATER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27813,7 +28758,7 @@
     "title": "FIXED  BUCKET  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27839,7 +28784,7 @@
     "title": "BUCKETED  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27865,7 +28810,7 @@
     "title": "CURRENT  WHEEL  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -27891,7 +28836,7 @@
     "title": "PERSIAN  WHEEL—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28095,7 +29040,7 @@
     "title": "VOLUTE  TURBINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28107,21 +29052,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0484",
     "title": "HIGH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28147,7 +29123,7 @@
     "title": "“LEFFEL”  DOUBLE-RUNNER  TUR¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28173,7 +29149,7 @@
     "title": "“  JONVAL”  TURBINE.  — The  upper",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28185,21 +29161,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0487",
     "title": "“JONVAL”  TURBINE. — b.  The  case  ;",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28211,21 +29218,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0488",
     "title": "TURBINE  AND  GATE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28237,21 +29275,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0489",
     "title": "“LANCASTER”  TURBINE,  downward",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28263,14 +29332,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-048a",
@@ -28983,7 +30083,7 @@
     "title": "“  MUNSON  ”  DOUBLE  TURBINE.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -28995,21 +30095,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0491",
     "title": "“  CAMDEN  ”  TURBINE,  has  two  inde¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29021,21 +30152,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0492",
     "title": "“MODEL”  TURBINE.— The  run¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29047,21 +30209,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0493",
     "title": "“  SWAIN  ”  TURBINE.— Inward  and",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29073,21 +30266,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0494",
     "title": "“WARREN  ”  CENTRAL-DISCHARGE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29113,7 +30337,7 @@
     "title": "“FOURNERON”  TURBINE.  — The",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29125,14 +30349,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0496",
@@ -29295,7 +30550,7 @@
     "title": "PELTON  WATER  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29321,7 +30576,7 @@
     "title": "Section  of  bucket",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29347,7 +30602,7 @@
     "title": "POWER  OF  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -29373,7 +30628,7 @@
     "title": "POWER  OF  WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -30814,7 +32069,7 @@
     "title": "SWAPE,  OR  NEW  ENGLAND  SWEEP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -32572,7 +33827,7 @@
     "title": "HYDRAULIC  RAM, t",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -32899,7 +34154,7 @@
     "title": "WATER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33528,7 +34783,7 @@
     "title": "HYDRAULIC  RAIL  PUNCH,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33933,7 +35188,7 @@
     "title": "Cross-section  of  basin.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -33959,7 +35214,7 @@
     "title": "UPWARD",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35544,7 +36799,7 @@
     "title": "VIBRATING  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35570,7 +36825,7 @@
     "title": "VARIABLE  COMPENSATING  WEIGHTS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35596,7 +36851,7 @@
     "title": "SAND  AUGER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35715,7 +36970,7 @@
     "title": "AUTOMATIC  FLUSH  SEWER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35741,7 +36996,7 @@
     "title": "AUTOMATIC  FLUSH  SEWER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35767,7 +37022,7 @@
     "title": "ATOMIZER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35793,7 +37048,7 @@
     "title": "BALL  AND  JET  NOZZLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35819,7 +37074,7 @@
     "title": "SPRAY  JET  NOZZLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -35845,7 +37100,7 @@
     "title": "HERO’",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36150,7 +37405,7 @@
     "title": "BOX  KITE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36290,7 +37545,7 @@
     "title": "HEMISPHERICAL  CUP  WINDMILL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36302,21 +37557,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0617",
     "title": "WINDMILL  OF  OUR  GRAND",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36328,21 +37614,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0618",
     "title": "WINDMILL  AND  STEEL  TOWER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36354,21 +37671,52 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0619",
     "title": "MODERN  WINDMILL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36380,14 +37728,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0620",
@@ -36492,7 +37871,7 @@
     "title": "SMITH’",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36518,7 +37897,7 @@
     "title": "DOUBLE  ORGAN  BLOWING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36692,7 +38071,7 @@
     "title": "FAN  BLOWER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36704,14 +38083,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0628",
@@ -36797,7 +38207,7 @@
     "title": "“FABRY”  ROTARY  BLOWER.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36809,14 +38219,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0630",
@@ -36908,7 +38349,7 @@
     "title": "“ROOT”  ROTARY  BLOWER.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -36920,14 +38361,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-0632",
@@ -37104,7 +38576,7 @@
     "title": "TROMPE  OR  HYDRAULIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37130,7 +38602,7 @@
     "title": "AIR  COMPRES¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37156,7 +38628,7 @@
     "title": "HYDRAULIC  AIR  COMPRESS¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37182,7 +38654,7 @@
     "title": "AIR  COM¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37208,7 +38680,7 @@
     "title": "Plan.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37306,7 +38778,7 @@
     "title": "AIR  COMPRESSOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37332,7 +38804,7 @@
     "title": "AIR  COMPRESSOR,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37451,7 +38923,7 @@
     "title": "DUPLEX  STEAM  ACTUATED  AIR  COMPRESSOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -37477,7 +38949,7 @@
     "title": "Elevation.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38071,7 +39543,7 @@
     "title": "AIR  COOLING  RECEIVER,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38692,7 +40164,7 @@
     "title": "RAISING  SUNKEN  VESSELS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38803,7 +40275,7 @@
     "title": "COMPOUND  PNEUMATIC  LOCOMOTIVE,  «",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38915,7 +40387,7 @@
     "title": "PNEUMATIC  CAR  SEAT  CLEANER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38941,7 +40413,7 @@
     "title": "AIR  SPRAY  NOZZLE  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38967,7 +40439,7 @@
     "title": "PNEUMATIC  PAINT  SPRAYER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -38993,7 +40465,7 @@
     "title": "PORTABLE  FIRE  EXTINGUISHER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -39019,7 +40491,7 @@
     "title": "FIRE  EXTINGUISHER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -39130,7 +40602,7 @@
     "title": "DUPLEX  PNEUMATIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -39156,7 +40628,7 @@
     "title": "PNEUMATIC  HAM¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -39860,7 +41332,7 @@
     "title": "Vertical  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -39971,7 +41443,7 @@
     "title": "TORCH  SOLDERING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40167,7 +41639,7 @@
     "title": "DOUBLE  CONE  VENTILATOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40193,7 +41665,7 @@
     "title": "SPIRAL  VANE  OR  COWL,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40219,7 +41691,7 @@
     "title": "WIND  INSTRUMENTS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40245,7 +41717,7 @@
     "title": "WIND  INSTRUMENTS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40271,7 +41743,7 @@
     "title": "VENTILATOR  OR  COWL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40297,7 +41769,7 @@
     "title": "A  WIND  GAUGE  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40323,7 +41795,7 @@
     "title": "COMPOUND  POHLE  AIR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40519,7 +41991,7 @@
     "title": "GAS  CRU",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40545,7 +42017,7 @@
     "title": "OIL  BURN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40571,7 +42043,7 @@
     "title": "MECHANICAL  FLYER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40597,7 +42069,7 @@
     "title": "SERIES  WOUND  MOTOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40737,7 +42209,7 @@
     "title": "FOUR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40763,7 +42235,7 @@
     "title": "RING  ARMATURE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40789,7 +42261,7 @@
     "title": "TWO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40815,7 +42287,7 @@
     "title": "SHUTTLE  ARMATURE,  m",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40841,7 +42313,7 @@
     "title": "Front  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -40867,7 +42339,7 @@
     "title": "DIRECT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41079,7 +42551,7 @@
     "title": "CAR  TRUCK  MOTORS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41105,7 +42577,7 @@
     "title": "TROLLEY  CAR,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41131,7 +42603,7 @@
     "title": "SECTIONAL  FEEDER  SYSTEM  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41157,7 +42629,7 @@
     "title": "STREET  RAILWAY  SINGLE  MOTOR  g",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41323,7 +42795,7 @@
     "title": "Section  of  solenoid,  with  the  take-up  pistons.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41686,7 +43158,7 @@
     "title": "TELEPHONE  RECEIVER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -41862,7 +43334,7 @@
     "title": "LUMINOUS  FOUNTAIN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42741,7 +44213,7 @@
     "title": "LEG",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42767,7 +44239,7 @@
     "title": "SKIP  JACK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42793,7 +44265,7 @@
     "title": "SQUARE  OR  LUG  SAIL,  a",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42819,7 +44291,7 @@
     "title": "LATEEN  RIG",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42845,7 +44317,7 @@
     "title": "SPLIT  LUG  OR  SQUARE  SAIL,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42871,7 +44343,7 @@
     "title": "TWO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42897,7 +44369,7 @@
     "title": "NEWPORT  CAT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42923,7 +44395,7 @@
     "title": "SLOOP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42949,7 +44421,7 @@
     "title": "LATEEN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -42975,7 +44447,7 @@
     "title": "PIROGUE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43001,7 +44473,7 @@
     "title": "THREE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43027,7 +44499,7 @@
     "title": "“SLIDING  GUNTER,”  or  sliding",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43053,7 +44525,7 @@
     "title": "SKIFF  YAWL  RIG",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43079,7 +44551,7 @@
     "title": "JIB",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43105,7 +44577,7 @@
     "title": "THE  CUTTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43131,7 +44603,7 @@
     "title": "SCHOONER  RIG",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43157,7 +44629,7 @@
     "title": "A  BARKENTINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43183,7 +44655,7 @@
     "title": "FULL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43209,7 +44681,7 @@
     "title": "A  BARK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43235,7 +44707,7 @@
     "title": "FULL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43261,7 +44733,7 @@
     "title": "FULL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43380,7 +44852,7 @@
     "title": "CLOVE  HITCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43406,7 +44878,7 @@
     "title": "HALF",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43536,7 +45008,7 @@
     "title": "FLEMISH  LOO",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43588,7 +45060,7 @@
     "title": "SHEET  BEND  AND",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43614,7 +45086,7 @@
     "title": "SHEET  BEND",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43692,7 +45164,7 @@
     "title": "BLACKWALL  TACKLE  HITCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43704,21 +45176,95 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-0804",
     "title": "FISHERMAN’",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -43744,7 +45290,7 @@
     "title": "ROUND  TURN  AND  HALF",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -44290,7 +45836,7 @@
     "title": "FLOATING  LIGHTHOUSE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -44401,7 +45947,7 @@
     "title": "FLOATING  DRY",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -44677,7 +46223,7 @@
     "title": "Cross  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45075,7 +46621,7 @@
     "title": "Side  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45452,7 +46998,7 @@
     "title": "THRUST  BEARING  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45550,7 +47096,7 @@
     "title": "DEEP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45576,7 +47122,7 @@
     "title": "Release  position.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45716,7 +47262,7 @@
     "title": "SAMPLER  SOUND¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45742,7 +47288,7 @@
     "title": "Cups  closed.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45768,7 +47314,7 @@
     "title": "SUBMARINE  LAMP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45858,7 +47404,7 @@
     "title": "REVERSIBLE  ROAD",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -45884,7 +47430,7 @@
     "title": "ROAD  ROLLER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46096,7 +47642,7 @@
     "title": "SPRING  WHEEL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46122,7 +47668,7 @@
     "title": "ELASTIC  WHEEL,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46148,7 +47694,7 @@
     "title": "APPLICATION  OF  TRACE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46737,7 +48283,7 @@
     "title": "BABY",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46789,7 +48335,7 @@
     "title": "ICE  BICYCLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46887,7 +48433,7 @@
     "title": "Pin-tooth  wheel  and",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -46998,7 +48544,7 @@
     "title": "Horizontal  plan.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -47510,7 +49056,7 @@
     "title": "Pin  showing’slots.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -47536,7 +49082,7 @@
     "title": "BALL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -47562,7 +49108,7 @@
     "title": "BALL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -47673,7 +49219,7 @@
     "title": "ACETYLENE  BICYCLE  LAMP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -47699,7 +49245,7 @@
     "title": "BICYCLE  LAMP _",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -49702,7 +51248,7 @@
     "title": "MANGLE  WHEEL  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -50992,7 +52538,7 @@
     "title": "PIN  WHEEL  AND  SLOTTED  PINION,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -51873,7 +53419,7 @@
     "title": "DOUBLING  THE  NUMBER  OF",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -52259,7 +53805,7 @@
     "title": "SLOW  FORWARD  AND  QUICK  BACK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -53372,7 +54918,7 @@
     "title": "STOP  ROLLER  MOTION,  u",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -53923,7 +55469,7 @@
     "title": "AUTOMATIC  CLUTCH  MOTION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57218,7 +58764,7 @@
     "title": "Elevation.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57430,7 +58976,7 @@
     "title": "STOPS  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57456,7 +59002,7 @@
     "title": "SAFETY  CENTRIFUGAL  HOOKS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57468,14 +59014,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-1027",
@@ -57567,7 +59144,7 @@
     "title": "CENTRIFUGAL  SAFETY  CATCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57579,14 +59156,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-1029",
@@ -57751,7 +59359,7 @@
     "title": "IRREGULAR  ROCKING  MOTION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57863,7 +59471,7 @@
     "title": "YOKE  STRAP  a",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57889,7 +59497,7 @@
     "title": "TRIANGULAR  CURVED  ECCENTRIC,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -57915,7 +59523,7 @@
     "title": "TRIANGULAR  ECCENTRIC  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -58111,7 +59719,7 @@
     "title": "NEEDLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -59279,7 +60887,7 @@
     "title": "QUADRANGULAR  RECTILINEAR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -59811,7 +61419,7 @@
     "title": "ROTARY  AND  LONGITUDINAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -60707,7 +62315,7 @@
     "title": "MULTIPLE  RETURN  GROOVED",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -60890,7 +62498,7 @@
     "title": "RECTILINEAR  RECIPROCAT¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -61425,7 +63033,7 @@
     "title": "SPIRAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -61723,7 +63331,7 @@
     "title": "OBLIQUE  DISC  MOTION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -61835,7 +63443,7 @@
     "title": "TRAVERSE  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -62390,7 +63998,7 @@
     "title": "VIBRATING  RECTILINEAR  MOTION,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -63913,7 +65521,7 @@
     "title": "VARIABLE  RECTILINEAR  MOTION  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64267,7 +65875,7 @@
     "title": "SLIDING  CONTACT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -64372,7 +65980,7 @@
     "title": "ANGULAR  SHAFT  COUPLING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -65011,7 +66619,7 @@
     "title": "GYROSCOPE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -66822,7 +68430,7 @@
     "title": "COMPENSATION  WATCH  BAL¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -66848,7 +68456,7 @@
     "title": "WATCH  REGULATOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -68324,7 +69932,7 @@
     "title": "EQUATED  SUN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69389,7 +70997,7 @@
     "title": "BOX",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69500,7 +71108,7 @@
     "title": "STEAM",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69526,7 +71134,7 @@
     "title": "MINER’",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69852,7 +71460,7 @@
     "title": "ELEVATOR  TOWER  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69878,7 +71486,7 @@
     "title": "HORIZONTAL  BOOM  TOWER,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -69904,7 +71512,7 @@
     "title": "MAST  AND  GAFF  HOIST,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70108,7 +71716,7 @@
     "title": "ELEVATOR  DUMPING  HEAD,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70248,7 +71856,7 @@
     "title": "d,  Cornish  kibble.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70388,7 +71996,7 @@
     "title": "b,  Water  bucket",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70414,7 +72022,7 @@
     "title": "a,  Tram  skip.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70533,7 +72141,7 @@
     "title": "CHAIN  SCRAPER  CON¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -70559,7 +72167,7 @@
     "title": "CABLE  CONVEYOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71644,7 +73252,7 @@
     "title": "“CHILI”  MILL— A  three-roller",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71670,7 +73278,7 @@
     "title": "PULVERIZING  BALL  AND  PAN  MILL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71696,7 +73304,7 @@
     "title": "REVOLVING  PULVER¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71836,7 +73444,7 @@
     "title": "COAL  DUST  PRESS  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71947,7 +73555,7 @@
     "title": "GOLD  SEPARATOR;",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71973,7 +73581,7 @@
     "title": "CENTRIFUGAL  SEPARATOR—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -71985,14 +73593,45 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "speed",
+        "label": "Rotation Speed",
+        "value": 1,
+        "min": -5,
+        "max": 5,
+        "unit": "x"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Time",
+        "unit": "s"
+      },
+      {
+        "id": "angle",
+        "label": "Angle",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "gear",
+        "p1": "p0",
+        "radius": "40",
+        "angle": "angle",
+        "color": "#b7410e"
+      }
+    ],
     "solver": {
       "type": "DIRECT"
-    }
+    },
+    "equations": [
+      "\\theta_{out} = \\omega t"
+    ]
   },
   {
     "id": "HISCOX-1247",
@@ -72025,7 +73664,7 @@
     "title": "Front  end  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72051,7 +73690,7 @@
     "title": "IRON  ORE  SEPARA¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72077,7 +73716,7 @@
     "title": "RAILWAY  STEAM",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72222,7 +73861,7 @@
     "title": "ORE  ROASTING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72248,7 +73887,7 @@
     "title": "RAILWAY  EXCAVATOR,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72274,7 +73913,7 @@
     "title": "RAILWAY  STEAM",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72300,7 +73939,7 @@
     "title": "CONTINUOUS  DITCHING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72440,7 +74079,7 @@
     "title": "REVOLVING  HOISTING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72466,7 +74105,7 @@
     "title": "FLOATING  DREDGE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72492,7 +74131,7 @@
     "title": "MARINE  DREDGE,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72676,7 +74315,7 @@
     "title": "FREE  RUN¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72702,7 +74341,7 @@
     "title": "AUTOMATIC  AIR  DUMP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72821,7 +74460,7 @@
     "title": "ADJUSTABLE  BRACKET",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72847,7 +74486,7 @@
     "title": "ADJUSTABLE  FLOOR  BEARING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72873,7 +74512,7 @@
     "title": "Elevation.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72899,7 +74538,7 @@
     "title": "Section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72925,7 +74564,7 @@
     "title": "ADJUSTABLE  POST  HANGER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72951,7 +74590,7 @@
     "title": "ADJUSTABLE  FLOOR  STAND,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -72977,7 +74616,7 @@
     "title": "CONTINUOUS  TRAVERSING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73003,7 +74642,7 @@
     "title": "ROLLER  WHEEL  ANTI",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73029,7 +74668,7 @@
     "title": "BALL  BEARINGSi",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73055,7 +74694,7 @@
     "title": "Longitudinal  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73323,7 +74962,7 @@
     "title": "HANGING  SHAFT  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73349,7 +74988,7 @@
     "title": "SUSPENDED  SHAFT  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -73502,7 +75141,7 @@
     "title": "LUBRICATION  OF  A  HANGING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74107,7 +75746,7 @@
     "title": "Side  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74133,7 +75772,7 @@
     "title": "FLEXIBLE  SHAFT  COUPLING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74159,7 +75798,7 @@
     "title": "The  cross  key  in",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74185,7 +75824,7 @@
     "title": "ANGLE  SHAFT  COUPLING,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74866,7 +76505,7 @@
     "title": "RIGHT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -74985,7 +76624,7 @@
     "title": "V-GROOVED  FACE  CLUTCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -75083,7 +76722,7 @@
     "title": "CONE  CLUTCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -75109,7 +76748,7 @@
     "title": "MULTIPLE  PLATE  FRICTION  CLUTCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -75135,7 +76774,7 @@
     "title": "Section  showing  stops  in  outer  case  and  keys  on  shaft.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -75354,7 +76993,7 @@
     "title": "FRICTION  PIN  CLUTCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -75494,7 +77133,7 @@
     "title": "Longitudinal  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76277,7 +77916,7 @@
     "title": "VARIABLE  SPEED  TRANSMITTING  DEVICE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76802,7 +78441,7 @@
     "title": "AUTOMATIC  BENCH  CLAMP,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76828,7 +78467,7 @@
     "title": "AUTOMATIC  BENCH  CLAMP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76854,7 +78493,7 @@
     "title": "WOOD",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76880,7 +78519,7 @@
     "title": "Offset  clamp.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76906,7 +78545,7 @@
     "title": "Thill  clamp.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -76932,7 +78571,7 @@
     "title": "Bend  clamp-",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77051,7 +78690,7 @@
     "title": "Longitudinal  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77077,7 +78716,7 @@
     "title": "ROLLER  TUBE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77103,7 +78742,7 @@
     "title": "REVOLVING  TOOL  HEAD,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77214,7 +78853,7 @@
     "title": "Longitudinal  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77304,7 +78943,7 @@
     "title": "Front  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77330,7 +78969,7 @@
     "title": "Longitudinal  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77356,7 +78995,7 @@
     "title": "Outside  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77454,7 +79093,7 @@
     "title": "Side  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77480,7 +79119,7 @@
     "title": "End  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77620,7 +79259,7 @@
     "title": "DISC  SHEARS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -77731,7 +79370,7 @@
     "title": "BAND  SAW,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -78264,7 +79903,7 @@
     "title": "MULTIPLE  DRILLING  MA¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -78490,7 +80129,7 @@
     "title": "BLACKSMITH’",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -78516,7 +80155,7 @@
     "title": "REVOLVING  RAPID",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -78720,7 +80359,7 @@
     "title": "BEAM  TRIP  HAMMER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -79018,7 +80657,7 @@
     "title": "Vertical  section.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -79116,7 +80755,7 @@
     "title": "COMBINED  PUNCH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -79956,7 +81595,7 @@
     "title": "CENTERING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -80240,7 +81879,7 @@
     "title": "I",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -80415,7 +82054,7 @@
     "title": "RECIPRO¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81181,7 +82820,7 @@
     "title": "TELESCOPIC  HYDRAULIC  ELEVATOR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81300,7 +82939,7 @@
     "title": "I",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81326,7 +82965,7 @@
     "title": "SWING  BRACKET  CRANE,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81496,7 +83135,7 @@
     "title": "SAFETY  TACKLE —",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "KINEMATICALLY_RECONSTRUCTED",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81508,14 +83147,88 @@
     },
     "assumptions": [],
     "relatedMechanisms": [],
-    "parameters": [],
-    "variables": [],
+    "parameters": [
+      {
+        "id": "r1",
+        "label": "Sheave 1",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "r2",
+        "label": "Sheave 2",
+        "value": 20,
+        "min": 10,
+        "max": 50,
+        "unit": "mm"
+      },
+      {
+        "id": "dx",
+        "label": "Distance X",
+        "value": 0,
+        "min": -100,
+        "max": 100,
+        "unit": "mm"
+      },
+      {
+        "id": "dy",
+        "label": "Distance Y",
+        "value": 80,
+        "min": 40,
+        "max": 200,
+        "unit": "mm"
+      },
+      {
+        "id": "crossed",
+        "label": "Crossed",
+        "value": 0,
+        "min": 0,
+        "max": 1,
+        "unit": "bool"
+      }
+    ],
+    "variables": [
+      {
+        "id": "theta",
+        "label": "Pull",
+        "unit": "rad"
+      },
+      {
+        "id": "theta2",
+        "label": "Follow",
+        "unit": "rad"
+      }
+    ],
     "components": [],
     "joints": [],
-    "visuals": [],
+    "visuals": [
+      {
+        "type": "circle",
+        "p1": "p0",
+        "radius": "r1",
+        "color": "#5a5854"
+      },
+      {
+        "type": "circle",
+        "p1": "p1",
+        "radius": "r2",
+        "color": "#5a5854"
+      },
+      {
+        "type": "belt",
+        "p1": "p0",
+        "p2": "p1",
+        "color": "#222"
+      }
+    ],
     "solver": {
-      "type": "DIRECT"
-    }
+      "type": "BELT_PULLEY"
+    },
+    "equations": [
+      "\\text{Block and Tackle}"
+    ]
   },
   {
     "id": "HISCOX-1414",
@@ -81810,7 +83523,7 @@
     "title": "TUBE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81836,7 +83549,7 @@
     "title": "SEAMLESS  TUBE  MAK¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81862,7 +83575,7 @@
     "title": "WIRE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81888,7 +83601,7 @@
     "title": "Samples  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81914,7 +83627,7 @@
     "title": "SEAMLESS  TUBE  MAKING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81940,7 +83653,7 @@
     "title": "HOPPER  AND  BELL,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -81966,7 +83679,7 @@
     "title": "“BESSEMER”  STEEL  CONVERTER.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82140,7 +83853,7 @@
     "title": "“BOGARDUS”  MILL.—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82166,7 +83879,7 @@
     "title": "Plan  showing  grooves.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82256,7 +83969,7 @@
     "title": "DOUBLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82745,7 +84458,7 @@
     "title": "CLOTH  DRESSER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -82771,7 +84484,7 @@
     "title": "KNITTING  MACHINE,  a",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83097,7 +84810,7 @@
     "title": "CONICAL  ROLLER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83187,7 +84900,7 @@
     "title": "CONICAL  PUG  MILL  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83213,7 +84926,7 @@
     "title": "CONCRETE  MIXER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83353,7 +85066,7 @@
     "title": "RIGHT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83379,7 +85092,7 @@
     "title": "AUTOMATIC  DISENGAGING  GRIP  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -83405,7 +85118,7 @@
     "title": "SWIVELLING  DUMPING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -84094,7 +85807,7 @@
     "title": "FOUR",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -84120,7 +85833,7 @@
     "title": "SHEARS  WITH  WINCH  o",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -84146,7 +85859,7 @@
     "title": "PORTABLE  STEAM  DERRICK,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -84172,7 +85885,7 @@
     "title": "SWING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -84198,7 +85911,7 @@
     "title": "CABLE  HOIST  AND  CON",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85204,7 +86917,7 @@
     "title": "Inclined  posts  and",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85360,7 +87073,7 @@
     "title": "Modification  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85386,7 +87099,7 @@
     "title": "Modification  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85412,7 +87125,7 @@
     "title": "The  “Fink”  system.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85438,7 +87151,7 @@
     "title": "The“Bollman”",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85656,7 +87369,7 @@
     "title": "A  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85760,7 +87473,7 @@
     "title": "EXPANSION  OR  AN¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -85812,7 +87525,7 @@
     "title": "PROPORTIONAL  COMPASSES  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -86244,7 +87957,7 @@
     "title": "FLEXIBLE  CURVE  SCRIBER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -86334,7 +88047,7 @@
     "title": "CONCHOID  DELINEATOR,",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -86474,7 +88187,7 @@
     "title": "TRAMMEL  FOR  DRAWING  ELLIPSES",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -86986,7 +88699,7 @@
     "title": "PANTOGRAPH",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87012,7 +88725,7 @@
     "title": "LAZY",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87102,7 +88815,7 @@
     "title": "SPHEROMETER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87335,7 +89048,7 @@
     "title": "HUMAN  TREADMILL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87361,7 +89074,7 @@
     "title": "HORSE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87387,7 +89100,7 @@
     "title": "HORSE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87578,7 +89291,7 @@
     "title": "HORSE  CLIPPER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87676,7 +89389,7 @@
     "title": "“ALMOND’S”",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87766,7 +89479,7 @@
     "title": "ARTIFICIAL  LEG  AND  FOOT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87792,7 +89505,7 @@
     "title": "MEAN  TIME  SUNDIAL",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87903,7 +89616,7 @@
     "title": "FOLDING  LADDER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87929,7 +89642,7 @@
     "title": "SIMPLE  COMBINATION  LOCK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -87955,7 +89668,7 @@
     "title": "TRIPOD",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88045,7 +89758,7 @@
     "title": "DISC  SLICER,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88135,7 +89848,7 @@
     "title": "CORRECT  PRINCIPLE  i",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88247,7 +89960,7 @@
     "title": "BELL  CLAPPER  MOVEMENT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88273,7 +89986,7 @@
     "title": "PIANO  KEY  AND  ACTION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88529,7 +90242,7 @@
     "title": "STIRRING  MACHINE,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88627,7 +90340,7 @@
     "title": "WOOD  COMPRESSION",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -88818,7 +90531,7 @@
     "title": "Shows  the  grip  closed.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89030,7 +90743,7 @@
     "title": "Normal  position  of",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89149,7 +90862,7 @@
     "title": "WHARF  CRANE,  w",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89432,7 +91145,7 @@
     "title": "SEWING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89594,7 +91307,7 @@
     "title": "End  view.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89620,7 +91333,7 @@
     "title": "TINPLATE  LAC¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89718,7 +91431,7 @@
     "title": "TYPEWRITING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89744,7 +91457,7 @@
     "title": "TYPEWRITING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89770,7 +91483,7 @@
     "title": "“GORDON”  PRINTING",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -89945,7 +91658,7 @@
     "title": "HYDRAULIC  TRANSFER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90242,7 +91955,7 @@
     "title": "FRICTION  BRAKE  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90268,7 +91981,7 @@
     "title": "CAR  TRUCK",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90294,7 +92007,7 @@
     "title": "STREET",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90392,7 +92105,7 @@
     "title": "FREIGHT",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90418,7 +92131,7 @@
     "title": "CABLE  RAILWAY  GRIP",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90444,7 +92157,7 @@
     "title": "Showing  wheel  connection  with",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90555,7 +92268,7 @@
     "title": "EXPANSION  OR  AN¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -90695,7 +92408,7 @@
     "title": "End  view  of  grip.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91249,7 +92962,7 @@
     "title": "WOODEN  FRAME  TURN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91275,7 +92988,7 @@
     "title": "IRON  FRAME  TURN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91301,7 +93014,7 @@
     "title": "PASSENGER  LOCOMOTIVE—",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91569,7 +93282,7 @@
     "title": "CENTRE  GUIDE  GAS  HOLDER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91595,7 +93308,7 @@
     "title": "COUNTER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91685,7 +93398,7 @@
     "title": "LANTERN  BELLOWS  DRY  GAS",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -91711,7 +93424,7 @@
     "title": "WET  GAS  METER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92101,7 +93814,7 @@
     "title": "FUEL  GAS  BURNER,  f",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92127,7 +93840,7 @@
     "title": "GAS  FURNACE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92297,7 +94010,7 @@
     "title": "ACETYLENE  GAS  GENERATOR,  “",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92323,7 +94036,7 @@
     "title": "ACETYLENE  GAS  GEN¬",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92434,7 +94147,7 @@
     "title": "Mantle  and  chimney.",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92574,7 +94287,7 @@
     "title": "ACETYLENE  BURNER,  m",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -92600,7 +94313,7 @@
     "title": "ACETYLENE  BURNER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -93145,7 +94858,7 @@
     "title": "CHASSEPOT  GUN",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -93171,7 +94884,7 @@
     "title": "REMINGTON  RIFLE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -93197,7 +94910,7 @@
     "title": "“REMINGTON”  MAGAZINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -93223,7 +94936,7 @@
     "title": "“  HOTCHKISS  ”  MAGAZINE",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -94917,7 +96630,7 @@
     "title": "ELECTROSTATIC",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -95426,7 +97139,7 @@
     "title": "",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -95452,7 +97165,7 @@
     "title": "Cross",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -95932,7 +97645,7 @@
     "title": "STEAM  SOOT  SUCKER  for",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -96771,7 +98484,7 @@
     "title": "",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -96797,7 +98510,7 @@
     "title": "NON",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -96823,7 +98536,7 @@
     "title": "AMPEREMETER",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "STATIC_ASSET",
     "source": {
       "edition": "1899",
       "year": 1899,
@@ -97069,7 +98782,7 @@
     "title": "",
     "families": [],
     "degreesOfFreedom": 0,
-    "fidelity": "STATIC",
+    "fidelity": "ILLUSTRATIVE_ONLY",
     "source": {
       "edition": "1899",
       "year": 1899,
