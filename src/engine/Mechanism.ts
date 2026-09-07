@@ -7,6 +7,7 @@ import { solvePlanetaryGear } from './solvers/PlanetaryGearSolver';
 import { solveRackPinion } from './solvers/RackPinionSolver';
 import { solveCamFollower } from './solvers/CamFollowerSolver';
 import { solveScotchYoke } from './solvers/ScotchYokeSolver';
+import { solveScrew } from './solvers/ScrewSolver';
 
 export class Mechanism {
   def: MechanismDefinition;
@@ -145,8 +146,17 @@ export class Mechanism {
       this.points['p2'] = res.p2;
       this.valid = res.valid;
       
-      // In a Scotch Yoke, the yoke frame moves with pos, and p1 is the crank pin sliding in the slot
       this.state['pos'] = res.pos;
+    } else if (this.def.solver.type === 'SCREW') {
+      const pitch = this.state['pitch'];
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveScrew({ pitch, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.valid = res.valid;
+      
+      this.state['x'] = res.x;
     }
   }
 }
