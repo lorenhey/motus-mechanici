@@ -198,6 +198,34 @@ export default function MechanismViewer({ def }: MechanismViewerProps) {
                 />
               );
             }
+            if (v.type === 'cam' && v.p1 && v.radius) {
+              const p1 = mech.points[v.p1];
+              if (!p1) return null;
+              
+              const radii = v.radius.split(',');
+              const rBase = (mech.state[radii[0]] || 10) * scale;
+              const rLift = (mech.state[radii[1]] || 10) * scale;
+              const angle = v.angle ? (mech.state[v.angle] || 0) : 0;
+              
+              // Draw an egg shape using SVG path, or simply an eccentric circle
+              // Eccentric circle: radius = rBase + rLift/2, offset by rLift/2
+              const r = rBase + rLift / 2;
+              const offset = rLift / 2;
+              
+              return (
+                <g key={i} transform={`translate(${cx + p1.x * scale}, ${cy - p1.y * scale}) rotate(${-angle * 180 / Math.PI})`}>
+                  <circle 
+                    cx={0} 
+                    cy={-offset} 
+                    r={Math.abs(r)} 
+                    fill="none" 
+                    stroke={v.color || "#b7410e"} 
+                    strokeWidth="2" 
+                  />
+                  <line x1={0} y1={0} x2={0} y2={-offset} stroke={v.color || "#b7410e"} strokeWidth="2" />
+                </g>
+              );
+            }
             return null;
           })}
           {/* Ground line (specifically for crank slider) */}
