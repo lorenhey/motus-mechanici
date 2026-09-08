@@ -1,0 +1,899 @@
+Found 445 STATIC mechanisms. Processing batch...
+
+Processing HISCOX-0003: THE  RESOLUTION  OF  SUS¬
+
+Processing HISCOX-0005: In  a  combination  of  forces
+
+Processing HISCOX-0006: The  forces  in  the  direction  of  P  and
+⏭️ Skipped HISCOX-0006 (Remains STATIC)
+
+Processing HISCOX-0007: Where  the  members  are  of
+
+Processing HISCOX-0008: For  unequal  angles.
+✅ Reconstructed HISCOX-0008
+
+Processing HISCOX-0011: First  order.
+⏭️ Skipped HISCOX-0011 (Remains STATIC)
+
+Processing HISCOX-0012: Second  order.
+✅ Reconstructed HISCOX-0012
+
+Processing HISCOX-0013: Third  order.
+✅ Reconstructed HISCOX-0013
+
+Processing HISCOX-0022: Weight  sliding  on  inclined  surface
+
+Processing HISCOX-0024: THE  WEDGE
+
+Processing HISCOX-0028: Two  single  sheaves,  a,  b,  c  are  of  equal
+⏭️ Skipped HISCOX-0028 (Remains STATIC)
+
+Processing HISCOX-0029: Simple  sheave  block.
+
+Processing HISCOX-0030: Two  single  sheave  blocks — upper  one
+⏭️ Skipped HISCOX-0030 (Remains STATIC)
+
+Processing HISCOX-0031: Three  single  sheave  blocks — one  block  fixed,
+
+Processing HISCOX-0032: Three  single  sheave  blocks,  consisting  of  two  fixed
+
+Processing HISCOX-0033: One  fixed  sheave  block,  one  movable  sheave  block.
+
+Processing HISCOX-0034: One  fixed  sheave  block,  two  movable  fixed
+
+Processing HISCOX-0038: Roving  of  a  three  and  two  sheave  pair  of
+
+Processing HISCOX-0041: CHINESE  SHAFT  DERRICK
+
+Processing HISCOX-0042: COMPOUND  WEIGHT  MOTOR,  f
+
+Processing HISCOX-0044: SPANISH  WINDLASS
+✅ Reconstructed HISCOX-0044
+
+Processing HISCOX-0078: OVER
+
+Processing HISCOX-0081: OVER
+
+Processing HISCOX-0130: CROWN  WHEEL  g
+
+Processing HISCOX-0147: FRICTION  MACHINE,  f
+
+Processing HISCOX-0156: “LIPPINCOTT”  PLAN.
+
+Processing HISCOX-0157: CENTRIFUGAL  SPEED  INDI¬
+
+Processing HISCOX-0159: METER  DIAL —
+
+Processing HISCOX-0160: AUTOMATIC  TIPPING  SCALE,
+
+Processing HISCOX-0164: OPERATION  OF  A  COUNTER
+
+Processing HISCOX-0177: HORIZONTAL
+
+Processing HISCOX-0180: “ECLIPSE”  RETURN  TUBULAR
+
+Processing HISCOX-0181: “GALLOWAY”
+
+Processing HISCOX-0182: INTERNAL  FIRED
+
+Processing HISCOX-0186: SUBMERGED  HEAD  VERTICAL
+
+Processing HISCOX-0191: “BOYER’S”  WATER
+
+Processing HISCOX-0194: Section  showing  bent  tubes.
+
+Processing HISCOX-0195: “MOYES
+
+Processing HISCOX-0197: “CAHALL”  VERTICAL  WATER  TUBE
+
+Processing HISCOX-0201: “  SERPOLLET’S  ”  STEAM  GENER¬
+
+Processing HISCOX-0205: FURNACE  GRATE,
+
+Processing HISCOX-0212: MECHANICAL  STOKER
+
+Processing HISCOX-0219: ORIGINAL  FORM  o
+
+Processing HISCOX-0227: COMPOUND  OSCILLATING
+
+Processing HISCOX-0231: TANDEM  COMPOUND  VERTICAL  EN
+
+Processing HISCOX-0232: TANDEM  COMPOUND  VERTICAL
+
+Processing HISCOX-0234: COMPOUND
+
+Processing HISCOX-0235: HIGH
+
+Processing HISCOX-0236: TANDEM  COMPOUND  ENGINE,
+
+Processing HISCOX-0309: Vertical  Section.
+
+Processing HISCOX-0312: “PORTER”  GOVERNOR.— The  cen¬
+
+Processing HISCOX-0325: “COCHRANE”  ROTARY  ENGINE.—
+
+Processing HISCOX-0326: OSCILLATING  ENGINE,  w
+
+Processing HISCOX-0332: ROLLER  PISTON  ROTARY  ENGINE
+
+Processing HISCOX-0333: “COCHRANE”  ROTARY  ENGINE
+
+Processing HISCOX-0334: “BOARDMAN”  ROTARY  EN¬
+
+Processing HISCOX-0347: “RUTH’S”  ROTARY  ENGINE.—
+
+Processing HISCOX-0364: «  WILKINSON’S  ”  STEAM
+
+Processing HISCOX-0365: Section  showing  steam  pockets.
+
+Processing HISCOX-0368: Vertical  section  of  engine.
+
+Processing HISCOX-0369: «  DE  LAVAL”  STEAM  TURBINE
+
+Processing HISCOX-0370: Plan  showing  nozzle  at  side  of
+
+Processing HISCOX-0373: “SHAEFFER  &  BUDEN-
+
+Processing HISCOX-0385: “BROWNLEY”  INJECTOR.—
+
+Processing HISCOX-0393: “SELLERS’”  SELF-
+
+Processing HISCOX-0398: EXHAUST  JET  CONDENSER
+
+Processing HISCOX-0403: FEED
+
+Processing HISCOX-0405: STEAM  SEPARATOR,  i
+
+Processing HISCOX-0409: SPRING  STEAM  TRAP—
+
+Processing HISCOX-0415: CORRUGATED  EXPANSION
+
+Processing HISCOX-0427: GASOLINE  CARRIAGE  MOTOR
+
+Processing HISCOX-0428: VERTICAL  GASOLINE  ENGINE,
+
+Processing HISCOX-0429: VERTICAL  GAS  ENGINE,
+
+Processing HISCOX-0440: INERTIA  GOVERNOR  f
+
+Processing HISCOX-0447: CARBURETTER
+
+Processing HISCOX-0454: CONNECTING  ROD  HEAD,  w
+
+Processing HISCOX-0455: CONNECTING  ROD  END
+
+Processing HISCOX-0457: CONNECTING  ROD  END,  w
+
+Processing HISCOX-0459: SOLID  END  CONNECTING  ROD
+
+Processing HISCOX-0465: OVERSHOT  WATER  WHEEL
+
+Processing HISCOX-0466: IRON  OVERSHOT
+
+Processing HISCOX-0467: Front  view.
+
+Processing HISCOX-0468: UNDERSHOT  WATER  WHEEL—
+
+Processing HISCOX-0469: SAW
+
+Processing HISCOX-0470: BREAST  WATER  WHEEL
+
+Processing HISCOX-0471: FLUTTER  WHEEL
+
+Processing HISCOX-0472: BARKER  WHEEL
+
+Processing HISCOX-0474: Section  of  wheel  and  case.
+
+Processing HISCOX-0475: CURRENT  WATER  WHEEL
+
+Processing HISCOX-0476: FIXED  BUCKET  WATER
+
+Processing HISCOX-0477: BUCKETED  WATER
+
+Processing HISCOX-0478: CURRENT  WHEEL  WATER
+
+Processing HISCOX-0480: PERSIAN  WHEEL—
+
+Processing HISCOX-0483: VOLUTE  TURBINE
+
+Processing HISCOX-0484: HIGH
+
+Processing HISCOX-0485: “LEFFEL”  DOUBLE-RUNNER  TUR¬
+
+Processing HISCOX-0486: “  JONVAL”  TURBINE.  — The  upper
+
+Processing HISCOX-0487: “JONVAL”  TURBINE. — b.  The  case  ;
+
+Processing HISCOX-0488: TURBINE  AND  GATE
+
+Processing HISCOX-0489: “LANCASTER”  TURBINE,  downward
+
+Processing HISCOX-0490: “  MUNSON  ”  DOUBLE  TURBINE.—
+
+Processing HISCOX-0491: “  CAMDEN  ”  TURBINE,  has  two  inde¬
+
+Processing HISCOX-0492: “MODEL”  TURBINE.— The  run¬
+
+Processing HISCOX-0493: “  SWAIN  ”  TURBINE.— Inward  and
+
+Processing HISCOX-0494: “WARREN  ”  CENTRAL-DISCHARGE
+
+Processing HISCOX-0495: “FOURNERON”  TURBINE.  — The
+
+Processing HISCOX-0499: PELTON  WATER  WHEEL
+
+Processing HISCOX-0501: Section  of  bucket
+
+Processing HISCOX-0502: POWER  OF  WATER
+
+Processing HISCOX-0503: POWER  OF  WATER
+
+Processing HISCOX-0525: SWAPE,  OR  NEW  ENGLAND  SWEEP
+
+Processing HISCOX-0551: HYDRAULIC  RAM, t
+
+Processing HISCOX-0559: WATER
+
+Processing HISCOX-0568: HYDRAULIC  RAIL  PUNCH,
+
+Processing HISCOX-0578: Cross-section  of  basin.
+
+Processing HISCOX-0579: UPWARD
+
+Processing HISCOX-0599: VIBRATING  MOTION  o
+
+Processing HISCOX-0600: VARIABLE  COMPENSATING  WEIGHTS
+
+Processing HISCOX-0601: SAND  AUGER
+
+Processing HISCOX-0603: AUTOMATIC  FLUSH  SEWER
+
+Processing HISCOX-0604: AUTOMATIC  FLUSH  SEWER
+
+Processing HISCOX-0605: ATOMIZER
+
+Processing HISCOX-0606: BALL  AND  JET  NOZZLE
+
+Processing HISCOX-0607: SPRAY  JET  NOZZLE
+
+Processing HISCOX-0608: HERO’
+
+Processing HISCOX-0613: BOX  KITE
+
+Processing HISCOX-0616: HEMISPHERICAL  CUP  WINDMILL
+
+Processing HISCOX-0617: WINDMILL  OF  OUR  GRAND
+
+Processing HISCOX-0618: WINDMILL  AND  STEEL  TOWER
+
+Processing HISCOX-0619: MODERN  WINDMILL
+
+Processing HISCOX-0622: SMITH’
+
+Processing HISCOX-0623: DOUBLE  ORGAN  BLOWING
+
+Processing HISCOX-0626: FAN  BLOWER
+
+Processing HISCOX-0629: “FABRY”  ROTARY  BLOWER.
+
+Processing HISCOX-0631: “ROOT”  ROTARY  BLOWER.
+
+Processing HISCOX-0634: TROMPE  OR  HYDRAULIC
+
+Processing HISCOX-0635: AIR  COMPRES¬
+
+Processing HISCOX-0636: HYDRAULIC  AIR  COMPRESS¬
+
+Processing HISCOX-0637: AIR  COM¬
+
+Processing HISCOX-0638: Plan.
+
+Processing HISCOX-0641: AIR  COMPRESSOR
+
+Processing HISCOX-0642: AIR  COMPRESSOR,
+
+Processing HISCOX-0644: DUPLEX  STEAM  ACTUATED  AIR  COMPRESSOR
+
+Processing HISCOX-0645: Elevation.
+
+Processing HISCOX-0652: AIR  COOLING  RECEIVER,  f
+
+Processing HISCOX-0660: RAISING  SUNKEN  VESSELS
+
+Processing HISCOX-0663: COMPOUND  PNEUMATIC  LOCOMOTIVE,  «
+
+Processing HISCOX-0665: PNEUMATIC  CAR  SEAT  CLEANER
+
+Processing HISCOX-0666: AIR  SPRAY  NOZZLE  f
+
+Processing HISCOX-0667: PNEUMATIC  PAINT  SPRAYER
+
+Processing HISCOX-0668: PORTABLE  FIRE  EXTINGUISHER
+
+Processing HISCOX-0669: FIRE  EXTINGUISHER
+
+Processing HISCOX-0671: DUPLEX  PNEUMATIC
+
+Processing HISCOX-0672: PNEUMATIC  HAM¬
+
+Processing HISCOX-0687: Vertical  section.
+
+Processing HISCOX-0689: TORCH  SOLDERING
+
+Processing HISCOX-0692: DOUBLE  CONE  VENTILATOR
+
+Processing HISCOX-0693: SPIRAL  VANE  OR  COWL,  f
+
+Processing HISCOX-0694: WIND  INSTRUMENTS
+
+Processing HISCOX-0695: WIND  INSTRUMENTS
+
+Processing HISCOX-0696: VENTILATOR  OR  COWL
+
+Processing HISCOX-0697: A  WIND  GAUGE  f
+
+Processing HISCOX-0698: COMPOUND  POHLE  AIR
+
+Processing HISCOX-0700: GAS  CRU
+
+Processing HISCOX-0701: OIL  BURN
+
+Processing HISCOX-0702: MECHANICAL  FLYER
+
+Processing HISCOX-0703: SERIES  WOUND  MOTOR
+
+Processing HISCOX-0707: FOUR
+
+Processing HISCOX-0708: RING  ARMATURE
+
+Processing HISCOX-0709: TWO
+
+Processing HISCOX-0710: SHUTTLE  ARMATURE,  m
+
+Processing HISCOX-0712: Front  view.
+
+Processing HISCOX-0718: DIRECT
+
+Processing HISCOX-0721: CAR  TRUCK  MOTORS
+
+Processing HISCOX-0724: TROLLEY  CAR,
+
+Processing HISCOX-0725: SECTIONAL  FEEDER  SYSTEM  f
+
+Processing HISCOX-0726: STREET  RAILWAY  SINGLE  MOTOR  g
+
+Processing HISCOX-0729: Section  of  solenoid,  with  the  take-up  pistons.
+
+Processing HISCOX-0736: TELEPHONE  RECEIVER
+
+Processing HISCOX-0741: LUMINOUS  FOUNTAIN
+
+Processing HISCOX-0760: LEG
+
+Processing HISCOX-0761: SKIP  JACK
+
+Processing HISCOX-0762: SQUARE  OR  LUG  SAIL,  a
+
+Processing HISCOX-0763: LATEEN  RIG
+
+Processing HISCOX-0764: SPLIT  LUG  OR  SQUARE  SAIL,
+
+Processing HISCOX-0765: TWO
+
+Processing HISCOX-0766: NEWPORT  CAT
+
+Processing HISCOX-0767: SLOOP
+
+Processing HISCOX-0768: LATEEN
+
+Processing HISCOX-0769: PIROGUE
+
+Processing HISCOX-0770: THREE
+
+Processing HISCOX-0771: “SLIDING  GUNTER,”  or  sliding
+
+Processing HISCOX-0772: SKIFF  YAWL  RIG
+
+Processing HISCOX-0774: JIB
+
+Processing HISCOX-0775: THE  CUTTER
+
+Processing HISCOX-0776: SCHOONER  RIG
+
+Processing HISCOX-0782: A  BARKENTINE
+
+Processing HISCOX-0783: FULL
+
+Processing HISCOX-0784: A  BARK
+
+Processing HISCOX-0785: FULL
+
+Processing HISCOX-0786: FULL
+
+Processing HISCOX-0788: CLOVE  HITCH
+
+Processing HISCOX-0789: HALF
+
+Processing HISCOX-0794: FLEMISH  LOO
+
+Processing HISCOX-0797: SHEET  BEND  AND
+
+Processing HISCOX-0798: SHEET  BEND
+
+Processing HISCOX-0803: BLACKWALL  TACKLE  HITCH
+
+Processing HISCOX-0804: FISHERMAN’
+
+Processing HISCOX-0805: ROUND  TURN  AND  HALF
+
+Processing HISCOX-0815: FLOATING  LIGHTHOUSE
+
+Processing HISCOX-0817: FLOATING  DRY
+
+Processing HISCOX-0821: Cross  section.
+
+Processing HISCOX-0827: Side  view.
+
+Processing HISCOX-0836: THRUST  BEARING  f
+
+Processing HISCOX-0838: DEEP
+
+Processing HISCOX-0839: Release  position.
+
+Processing HISCOX-0841: SAMPLER  SOUND¬
+
+Processing HISCOX-0842: Cups  closed.
+
+Processing HISCOX-0843: SUBMARINE  LAMP
+
+Processing HISCOX-0847: REVERSIBLE  ROAD
+
+Processing HISCOX-0848: ROAD  ROLLER
+
+Processing HISCOX-0851: SPRING  WHEEL
+
+Processing HISCOX-0852: ELASTIC  WHEEL,  w
+
+Processing HISCOX-0853: APPLICATION  OF  TRACE
+
+Processing HISCOX-0862: BABY
+
+Processing HISCOX-0864: ICE  BICYCLE
+
+Processing HISCOX-0866: Pin-tooth  wheel  and
+
+Processing HISCOX-0868: Horizontal  plan.
+
+Processing HISCOX-0875: Pin  showing’slots.
+
+Processing HISCOX-0876: BALL
+
+Processing HISCOX-0877: BALL
+
+Processing HISCOX-0879: ACETYLENE  BICYCLE  LAMP
+
+Processing HISCOX-0880: BICYCLE  LAMP _
+
+Processing HISCOX-0905: MANGLE  WHEEL  w
+
+Processing HISCOX-0926: PIN  WHEEL  AND  SLOTTED  PINION,
+
+Processing HISCOX-0939: DOUBLING  THE  NUMBER  OF
+
+Processing HISCOX-0945: SLOW  FORWARD  AND  QUICK  BACK
+
+Processing HISCOX-0967: STOP  ROLLER  MOTION,  u
+
+Processing HISCOX-0981: AUTOMATIC  CLUTCH  MOTION
+
+Processing HISCOX-1022a: Elevation.
+
+Processing HISCOX-1025: STOPS  f
+
+Processing HISCOX-1026: SAFETY  CENTRIFUGAL  HOOKS
+
+Processing HISCOX-1028: CENTRIFUGAL  SAFETY  CATCH
+
+Processing HISCOX-1031: IRREGULAR  ROCKING  MOTION
+
+Processing HISCOX-1033: YOKE  STRAP  a
+
+Processing HISCOX-1034: TRIANGULAR  CURVED  ECCENTRIC,
+
+Processing HISCOX-1035: TRIANGULAR  ECCENTRIC  f
+
+Processing HISCOX-1038: NEEDLE
+
+Processing HISCOX-1053: QUADRANGULAR  RECTILINEAR
+
+Processing HISCOX-1061: ROTARY  AND  LONGITUDINAL
+
+Processing HISCOX-1071: MULTIPLE  RETURN  GROOVED
+
+Processing HISCOX-1075: RECTILINEAR  RECIPROCAT¬
+
+Processing HISCOX-1081: SPIRAL
+
+Processing HISCOX-1085: OBLIQUE  DISC  MOTION
+
+Processing HISCOX-1087: TRAVERSE  MOTION  o
+
+Processing HISCOX-1094: VIBRATING  RECTILINEAR  MOTION,
+
+Processing HISCOX-1122: VARIABLE  RECTILINEAR  MOTION  o
+
+Processing HISCOX-1129: SLIDING  CONTACT
+
+Processing HISCOX-1131: ANGULAR  SHAFT  COUPLING
+
+Processing HISCOX-1139: GYROSCOPE
+
+Processing HISCOX-1174: COMPENSATION  WATCH  BAL¬
+
+Processing HISCOX-1175: WATCH  REGULATOR
+
+Processing HISCOX-1194a: EQUATED  SUN
+
+Processing HISCOX-1206: BOX
+
+Processing HISCOX-1208: STEAM
+
+Processing HISCOX-1209: MINER’
+
+Processing HISCOX-1213: ELEVATOR  TOWER  w
+
+Processing HISCOX-1214: HORIZONTAL  BOOM  TOWER,
+
+Processing HISCOX-1215: MAST  AND  GAFF  HOIST,
+
+Processing HISCOX-1218: ELEVATOR  DUMPING  HEAD,
+
+Processing HISCOX-1220: d,  Cornish  kibble.
+
+Processing HISCOX-1222: b,  Water  bucket
+
+Processing HISCOX-1223: a,  Tram  skip.
+
+Processing HISCOX-1225: CHAIN  SCRAPER  CON¬
+
+Processing HISCOX-1226: CABLE  CONVEYOR
+
+Processing HISCOX-1239: “CHILI”  MILL— A  three-roller
+
+Processing HISCOX-1240: PULVERIZING  BALL  AND  PAN  MILL
+
+Processing HISCOX-1241: REVOLVING  PULVER¬
+
+Processing HISCOX-1243: COAL  DUST  PRESS  f
+
+Processing HISCOX-1245: GOLD  SEPARATOR;
+
+Processing HISCOX-1246: CENTRIFUGAL  SEPARATOR—
+
+Processing HISCOX-1247a: Front  end  view.
+
+Processing HISCOX-1248: IRON  ORE  SEPARA¬
+
+Processing HISCOX-1249: RAILWAY  STEAM
+
+Processing HISCOX-1252: ORE  ROASTING
+
+Processing HISCOX-1253: RAILWAY  EXCAVATOR,
+
+Processing HISCOX-1254: RAILWAY  STEAM
+
+Processing HISCOX-1255: CONTINUOUS  DITCHING
+
+Processing HISCOX-1257: REVOLVING  HOISTING
+
+Processing HISCOX-1258: FLOATING  DREDGE,
+
+Processing HISCOX-1259: MARINE  DREDGE,
+
+Processing HISCOX-1259d: FREE  RUN¬
+
+Processing HISCOX-1259ft: AUTOMATIC  AIR  DUMP
+
+Processing HISCOX-1260: ADJUSTABLE  BRACKET
+
+Processing HISCOX-1261: ADJUSTABLE  FLOOR  BEARING
+
+Processing HISCOX-1262: Elevation.
+
+Processing HISCOX-1263: Section.
+
+Processing HISCOX-1265: ADJUSTABLE  POST  HANGER
+
+Processing HISCOX-1266: ADJUSTABLE  FLOOR  STAND,
+
+Processing HISCOX-1267: CONTINUOUS  TRAVERSING
+
+Processing HISCOX-1268: ROLLER  WHEEL  ANTI
+
+Processing HISCOX-1269: BALL  BEARINGSi
+
+Processing HISCOX-1270: Longitudinal  section.
+
+Processing HISCOX-1274: HANGING  SHAFT  o
+
+Processing HISCOX-1275: SUSPENDED  SHAFT  o
+
+Processing HISCOX-1278: LUBRICATION  OF  A  HANGING
+
+Processing HISCOX-1290: Side  view.
+
+Processing HISCOX-1291: FLEXIBLE  SHAFT  COUPLING
+
+Processing HISCOX-1292: The  cross  key  in
+
+Processing HISCOX-1293: ANGLE  SHAFT  COUPLING,
+
+Processing HISCOX-1300: RIGHT
+
+Processing HISCOX-1305: V-GROOVED  FACE  CLUTCH
+
+Processing HISCOX-1307: CONE  CLUTCH
+
+Processing HISCOX-1308: MULTIPLE  PLATE  FRICTION  CLUTCH
+
+Processing HISCOX-1309: Section  showing  stops  in  outer  case  and  keys  on  shaft.
+
+Processing HISCOX-1313: FRICTION  PIN  CLUTCH
+
+Processing HISCOX-1315: Longitudinal  section.
+
+Processing HISCOX-1324: VARIABLE  SPEED  TRANSMITTING  DEVICE
+
+Processing HISCOX-1330: AUTOMATIC  BENCH  CLAMP,
+
+Processing HISCOX-1331: AUTOMATIC  BENCH  CLAMP
+
+Processing HISCOX-1332: WOOD
+
+Processing HISCOX-1332a: Offset  clamp.
+
+Processing HISCOX-1333: Thill  clamp.
+
+Processing HISCOX-1334: Bend  clamp-
+
+Processing HISCOX-1336: Longitudinal  section.
+
+Processing HISCOX-1337: ROLLER  TUBE
+
+Processing HISCOX-1338: REVOLVING  TOOL  HEAD,
+
+Processing HISCOX-1340: Longitudinal  section.
+
+Processing HISCOX-1343: Front  view.
+
+Processing HISCOX-1344: Longitudinal  section.
+
+Processing HISCOX-1345: Outside  view.
+
+Processing HISCOX-1347: Side  view.
+
+Processing HISCOX-1348: End  view.
+
+Processing HISCOX-1351: DISC  SHEARS
+
+Processing HISCOX-1353: BAND  SAW,  f
+
+Processing HISCOX-1359: MULTIPLE  DRILLING  MA¬
+
+Processing HISCOX-1362: BLACKSMITH’
+
+Processing HISCOX-1363: REVOLVING  RAPID
+
+Processing HISCOX-1366: BEAM  TRIP  HAMMER
+
+Processing HISCOX-1370: Vertical  section.
+
+Processing HISCOX-1372: COMBINED  PUNCH
+
+Processing HISCOX-1388: CENTERING
+
+Processing HISCOX-138w: I
+
+Processing HISCOX-1394: RECIPRO¬
+
+Processing HISCOX-1405: TELESCOPIC  HYDRAULIC  ELEVATOR
+
+Processing HISCOX-1408: I
+
+Processing HISCOX-1409: SWING  BRACKET  CRANE,  w
+
+Processing HISCOX-1413: SAFETY  TACKLE —
+
+Processing HISCOX-1419: TUBE
+
+Processing HISCOX-1420: SEAMLESS  TUBE  MAK¬
+
+Processing HISCOX-1421: WIRE
+
+Processing HISCOX-1422: Samples  of
+
+Processing HISCOX-1423: SEAMLESS  TUBE  MAKING
+
+Processing HISCOX-1424: HOPPER  AND  BELL,  f
+
+Processing HISCOX-1425: “BESSEMER”  STEEL  CONVERTER.—
+
+Processing HISCOX-1428: “BOGARDUS”  MILL.—
+
+Processing HISCOX-1429: Plan  showing  grooves.
+
+Processing HISCOX-1431: DOUBLE
+
+Processing HISCOX-1440: CLOTH  DRESSER
+
+Processing HISCOX-1441: KNITTING  MACHINE,  a
+
+Processing HISCOX-1443d: CONICAL  ROLLER
+
+Processing HISCOX-1446: CONICAL  PUG  MILL  f
+
+Processing HISCOX-1448: CONCRETE  MIXER
+
+Processing HISCOX-1452: RIGHT
+
+Processing HISCOX-1458: AUTOMATIC  DISENGAGING  GRIP  f
+
+Processing HISCOX-1459: SWIVELLING  DUMPING
+
+Processing HISCOX-1466: FOUR
+
+Processing HISCOX-1467: SHEARS  WITH  WINCH  o
+
+Processing HISCOX-1469: PORTABLE  STEAM  DERRICK,
+
+Processing HISCOX-1470: SWING
+
+Processing HISCOX-1471: CABLE  HOIST  AND  CON
+
+Processing HISCOX-1493: Inclined  posts  and
+
+Processing HISCOX-1499: Modification  of
+
+Processing HISCOX-1500: Modification  of
+
+Processing HISCOX-1501: The  “Fink”  system.
+
+Processing HISCOX-1502: The“Bollman”
+
+Processing HISCOX-1507: A  f
+
+Processing HISCOX-1510a: EXPANSION  OR  AN¬
+
+Processing HISCOX-1511: PROPORTIONAL  COMPASSES  f
+
+Processing HISCOX-1517: FLEXIBLE  CURVE  SCRIBER
+
+Processing HISCOX-1520: CONCHOID  DELINEATOR,
+
+Processing HISCOX-1522: TRAMMEL  FOR  DRAWING  ELLIPSES
+
+Processing HISCOX-1528: PANTOGRAPH
+
+Processing HISCOX-1529: LAZY
+
+Processing HISCOX-1531: SPHEROMETER
+
+Processing HISCOX-1532: HUMAN  TREADMILL
+
+Processing HISCOX-1533: HORSE
+
+Processing HISCOX-1534: HORSE
+
+Processing HISCOX-1538: HORSE  CLIPPER
+
+Processing HISCOX-1540: “ALMOND’S”
+
+Processing HISCOX-1542: ARTIFICIAL  LEG  AND  FOOT
+
+Processing HISCOX-1543: MEAN  TIME  SUNDIAL
+
+Processing HISCOX-1545: FOLDING  LADDER
+
+Processing HISCOX-1546: SIMPLE  COMBINATION  LOCK
+
+Processing HISCOX-1547: TRIPOD
+
+Processing HISCOX-1549: DISC  SLICER,  w
+
+Processing HISCOX-1551: CORRECT  PRINCIPLE  i
+
+Processing HISCOX-1554: BELL  CLAPPER  MOVEMENT
+
+Processing HISCOX-1555: PIANO  KEY  AND  ACTION
+
+Processing HISCOX-1559: STIRRING  MACHINE,  f
+
+Processing HISCOX-1561: WOOD  COMPRESSION
+
+Processing HISCOX-1564: Shows  the  grip  closed.
+
+Processing HISCOX-1567: Normal  position  of
+
+Processing HISCOX-1571: WHARF  CRANE,  w
+
+Processing HISCOX-1575: SEWING
+
+Processing HISCOX-1579: End  view.
+
+Processing HISCOX-1580: TINPLATE  LAC¬
+
+Processing HISCOX-1582: TYPEWRITING
+
+Processing HISCOX-1583: TYPEWRITING
+
+Processing HISCOX-1584: “GORDON”  PRINTING
+
+Processing HISCOX-1587: HYDRAULIC  TRANSFER
+
+Processing HISCOX-1591: FRICTION  BRAKE  f
+
+Processing HISCOX-1592: CAR  TRUCK
+
+Processing HISCOX-1593: STREET
+
+Processing HISCOX-1596: FREIGHT
+
+Processing HISCOX-1597: CABLE  RAILWAY  GRIP
+
+Processing HISCOX-1598: Showing  wheel  connection  with
+
+Processing HISCOX-15iot: EXPANSION  OR  AN¬
+
+Processing HISCOX-1600: End  view  of  grip.
+
+Processing HISCOX-1606: WOODEN  FRAME  TURN
+
+Processing HISCOX-1607: IRON  FRAME  TURN
+
+Processing HISCOX-1610: PASSENGER  LOCOMOTIVE—
+
+Processing HISCOX-1616: CENTRE  GUIDE  GAS  HOLDER
+
+Processing HISCOX-1617: COUNTER
+
+Processing HISCOX-1619: LANTERN  BELLOWS  DRY  GAS
+
+Processing HISCOX-1620: WET  GAS  METER
+
+Processing HISCOX-1625: FUEL  GAS  BURNER,  f
+
+Processing HISCOX-1626: GAS  FURNACE
+
+Processing HISCOX-1629: ACETYLENE  GAS  GENERATOR,  “
+
+Processing HISCOX-1631: ACETYLENE  GAS  GEN¬
+
+Processing HISCOX-1633: Mantle  and  chimney.
+
+Processing HISCOX-1635: ACETYLENE  BURNER,  m
+
+Processing HISCOX-1636: ACETYLENE  BURNER
+
+Processing HISCOX-1642: CHASSEPOT  GUN
+
+Processing HISCOX-1643: REMINGTON  RIFLE
+
+Processing HISCOX-1644: “REMINGTON”  MAGAZINE
+
+Processing HISCOX-1645: “  HOTCHKISS  ”  MAGAZINE
+
+Processing HISCOX-1710: ELECTROSTATIC
+
+Processing HISCOX-3fitfrictionspringtogiveitthewindingtension: 
+
+Processing HISCOX-403a: Cross
+
+Processing HISCOX-42lc: STEAM  SOOT  SUCKER  for
+
+Processing HISCOX-6acresofgardenland: 
+
+Processing HISCOX-759a: NON
+
+Processing HISCOX-759b: AMPEREMETER
+
+Processing HISCOX-796carrickbend: 
