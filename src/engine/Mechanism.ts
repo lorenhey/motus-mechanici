@@ -8,6 +8,8 @@ import { solveRackPinion } from './solvers/RackPinionSolver';
 import { solveCamFollower } from './solvers/CamFollowerSolver';
 import { solveScotchYoke } from './solvers/ScotchYokeSolver';
 import { solveScrew } from './solvers/ScrewSolver';
+import { solveIntermittent } from './solvers/IntermittentSolver';
+import { solveEscapement } from './solvers/EscapementSolver';
 
 export class Mechanism {
   def: MechanismDefinition;
@@ -157,6 +159,29 @@ export class Mechanism {
       this.valid = res.valid;
       
       this.state['x'] = res.x;
+    } else if (this.def.solver.type === 'INTERMITTENT') {
+      const teeth = this.state['teeth'] || 6;
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveIntermittent({ teeth, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.valid = res.valid;
+      
+      this.state['theta_out'] = res.theta_out;
+      this.state['theta_in'] = res.theta_in;
+    } else if (this.def.solver.type === 'ESCAPEMENT') {
+      const teeth = this.state['teeth'] || 30;
+      const amplitude = this.state['amplitude'] || 0.5;
+      const theta = this.state['theta'] || 0;
+      
+      const res = solveEscapement({ teeth, amplitude, theta });
+      this.points['p0'] = res.p0;
+      this.points['p1'] = res.p1;
+      this.valid = res.valid;
+      
+      this.state['pendulum_angle'] = res.pendulum_angle;
+      this.state['wheel_angle'] = res.wheel_angle;
     }
   }
 }

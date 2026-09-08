@@ -218,6 +218,45 @@ for (const entry of data) {
     entry.equations = ["x = \\text{pitch} \\times \\frac{\\theta}{2\\pi}"];
     count++;
   }
+  else if (text.includes('INTERMITTENT') || text.includes('RATCHET') || text.includes('GENEVA') || text.includes('STEP')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'INTERMITTENT' };
+    entry.parameters = [
+      { id: "teeth", label: "Teeth / Steps", value: 6, min: 3, max: 20, unit: "n" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Input Angle", unit: "rad" },
+      { id: "theta_out", label: "Output Angle", unit: "rad" }
+    ];
+    entry.visuals = [
+      { type: "circle", p1: "p0", radius: "10", color: "#b7410e" },
+      { type: "gear", p1: "p1", radius: "30", angle: "theta_out", color: "#5a5854" }
+    ];
+    entry.equations = ["\\theta_{out} = \\text{step}(\\theta_{in}, \\text{teeth})"];
+    count++;
+  }
+  else if (text.includes('ESCAPEMENT') || text.includes('CLOCK') || text.includes('PENDULUM')) {
+    entry.fidelity = 'KINEMATICALLY_RECONSTRUCTED';
+    entry.solver = { type: 'ESCAPEMENT' };
+    entry.parameters = [
+      { id: "teeth", label: "Wheel Teeth", value: 30, min: 10, max: 60, unit: "n" },
+      { id: "amplitude", label: "Swing Amp", value: 0.5, min: 0.1, max: 1.5, unit: "rad" }
+    ];
+    entry.variables = [
+      { id: "theta", label: "Time/Phase", unit: "rad" },
+      { id: "pendulum_angle", label: "Pendulum", unit: "rad" },
+      { id: "wheel_angle", label: "Wheel", unit: "rad" }
+    ];
+    entry.visuals = [
+      { type: "line", p1: "p0", p2: "p1", color: "#b7410e" },
+      { type: "gear", p1: "p1", radius: "40", angle: "wheel_angle", color: "#5a5854" }
+    ];
+    entry.equations = [
+      "\\phi_{pendulum} = A \\sin(t)",
+      "\\theta_{wheel} = \\text{tick}(t, \\text{teeth})"
+    ];
+    count++;
+  }
 }
 
 fs.writeFileSync(path, JSON.stringify(data, null, 2));
