@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import MechanismDetail from './pages/MechanismDetail';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-paper text-ink flex flex-col font-serif">
         <header className="border-b border-ink-light/20 py-6 px-8 flex justify-between items-center">
           <div>
@@ -12,7 +12,7 @@ function App() {
             <p className="text-ink-light text-sm italic mt-1">1800 mechanical movements brought back to motion.</p>
           </div>
           <nav>
-            <a href="/" className="hover:text-accent transition-colors">Atlas</a>
+            <Link to="/" className="hover:text-accent transition-colors">Atlas</Link>
           </nav>
         </header>
         
